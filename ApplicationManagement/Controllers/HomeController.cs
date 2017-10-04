@@ -10,6 +10,16 @@ namespace ApplicationManagement.Controllers
     {
         public IActionResult Index()
         {
+            using (var context = new ApplicationDbContext())
+            {
+                context.Teacher.Add(new DbModel.Teacher
+                {
+                    NickName = "C",
+                    DateOfbirth = DateTime.Now
+                });
+                context.SaveChangesAsync();
+            }
+
             return View();
         }
 
