@@ -8,7 +8,6 @@ namespace ApplicationManagement.DbModel
     public class Experience
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public UInt64 Id { get; set; }
         [ForeignKey("Teacher")]
         public UInt64 TeacherId { get; set; }

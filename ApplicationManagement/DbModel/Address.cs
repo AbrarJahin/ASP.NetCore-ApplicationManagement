@@ -7,10 +7,9 @@ namespace ApplicationManagement.DbModel
     public class Address
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public UInt64 Id { get; set; }
-        [ForeignKey("Teacher")]
-        public UInt64 TeacherId { get; set; }
+
+        public virtual Teacher Teacher { get; set; }
 
         public string HoldingNoOrVillage { get; set; }
         public string RoadBlockSector { get; set; }

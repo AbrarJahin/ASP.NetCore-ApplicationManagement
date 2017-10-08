@@ -9,11 +9,9 @@ namespace ApplicationManagement.DbModel
     public class Teacher
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public UInt64 Id { get; set; }
-        [ForeignKey("JobCircular")]
-        public UInt64 JobCircularId { get; set; }
 
+        public virtual JobCircular JobCircular { get; set; }
         //No 1 in form
         public string BengaliName { get; set; }
         public string EnglishName { get; set; }
@@ -30,8 +28,8 @@ namespace ApplicationManagement.DbModel
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public TimeSpan AgeAtLastDateOfSubmission { get; set; }
 
-        public Address PresentAddress { get; set; }     //No 6 in form
-        public Address PermanentAddress { get; set; }   //No 7 in form
+        //public virtual Address PresentAddress { get; set; }     //No 6 in form
+        //public virtual Address PermanentAddress { get; set; }   //No 7 in form
 
         public string Nationality { get; set; }         //No 8 in form
 
@@ -39,22 +37,22 @@ namespace ApplicationManagement.DbModel
         public ReligionName Religion { get; set; }      //No 10 in form
         public string NId { get; set; }                 //No 11 in form
 
-        public ICollection<EducationalStatus> EducationalResult { get; set; }   //No 12 in form
+        //public virtual ICollection<EducationResult> EducationalResults { get; set; }   //No 12 in form
 
-        public ICollection<ResearchDegree> ResearchDegries { get; set; }        //No 13 in form
-        public ICollection<Research> Researches { get; set; }                   //No 14 in form
-        public ICollection<Language> Languages { get; set; }                    //No 15 in form
-        public ICollection<Training> Trainings { get; set; }                    //No 16 in form
-        public ICollection<Experience> Experiences { get; set; }                //No 17 in form
+        //public virtual ICollection<ResearchDegree> ResearchDegries { get; set; }        //No 13 in form
+        //public virtual ICollection<Research> Researches { get; set; }                   //No 14 in form
+        //public virtual ICollection<Language> Languages { get; set; }                    //No 15 in form
+        //public virtual ICollection<Training> Trainings { get; set; }                    //No 16 in form
+        //public virtual ICollection<Experience> Experiences { get; set; }                //No 17 in form
 
         //No 18 in form
         public Decision HasContactWithAnyOrganization { get; set; }
         public string OrganizationContactDescription { get; set; }
 
-        public ICollection<Reference> References { get; set; }                  //No 19 in form
+        //public virtual ICollection<Reference> References { get; set; }                  //No 19 in form
 
         public string VolunteerExperience { get; set; }                         //No 20 in form
-        public ICollection<Country> VisitedCountries { get; set; }              //No 21 in form
+        //public virtual ICollection<Country> VisitedCountries { get; set; }              //No 21 in form
 
         //No 22 in form
         public Decision IsEverSuspended { get; set; }
@@ -95,10 +93,10 @@ namespace ApplicationManagement.DbModel
 
         public Teacher()
         {
-            AddedDate = DateTime.Now;
-            LastModifiedDate = DateTime.Now;
+            AddedDate = DateTime.UtcNow;
+            LastModifiedDate = DateTime.UtcNow;
 
-            AgeAtLastDateOfSubmission = DateTime.Now - DateOfbirth;
+            AgeAtLastDateOfSubmission = DateTime.UtcNow - DateOfbirth;
         }
     }
 }

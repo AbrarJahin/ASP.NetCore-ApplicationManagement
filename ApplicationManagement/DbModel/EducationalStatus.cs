@@ -4,10 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApplicationManagement.DbModel
 {
-    public class EducationalStatus
+    public class EducationResult
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public UInt64 Id { get; set; }
         [ForeignKey("Teacher")]
         public UInt64 TeacherId { get; set; }
@@ -18,14 +17,16 @@ namespace ApplicationManagement.DbModel
         public UInt16 YearOfPassing { get; set; }
         public UInt16 YearOfExam { get; set; }
         public string DivisionOrClassOrGPAOrCGPA { get; set; }
+        public string CertificatePdfFileUrl { get; set; }
+        public string TranscriptPdfFileUrl { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime AddedDate { get; set; }
 
-        public EducationalStatus()
+        public EducationResult()
         {
-            AddedDate = DateTime.Now;
+            AddedDate = DateTime.UtcNow;
         }
     }
 }

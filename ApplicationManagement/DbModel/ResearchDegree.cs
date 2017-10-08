@@ -7,7 +7,6 @@ namespace ApplicationManagement.DbModel
     public class ResearchDegree
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public UInt64 Id { get; set; }
         [ForeignKey("Teacher")]
         public UInt64 TeacherId { get; set; }

@@ -5,6 +5,7 @@ namespace ApplicationManagement.DbModel
 {
     public class BaseEntity
     {
+        [Key]
         public UInt64 Id { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
