@@ -4,19 +4,19 @@ using Microsoft.EntityFrameworkCore;
 public class ApplicationDbContext : DbContext
 {
     //List all tables here
-    /*
+    
     public DbSet<Address> Addresses { get; set; }
-    public DbSet<Country> Countries { get; set; }
+    //public DbSet<Country> Countries { get; set; }
     public DbSet<EducationResult> EducationResults { get; set; }
-    public DbSet<Experience> Experiences { get; set; }
+    //public DbSet<Experience> Experiences { get; set; }
     
-    public DbSet<Language> Languages { get; set; }
-    public DbSet<Reference> References { get; set; }
-    public DbSet<Research> Researches { get; set; }
-    public DbSet<ResearchDegree> ResearchDegrees { get; set; }
+    //public DbSet<Language> Languages { get; set; }
+    //public DbSet<Reference> References { get; set; }
+    //public DbSet<Research> Researches { get; set; }
+    //public DbSet<ResearchDegree> ResearchDegrees { get; set; }
     
-    public DbSet<Training> Trainings { get; set; }
-    */
+    //public DbSet<Training> Trainings { get; set; }
+
     public DbSet<JobCircular> JobCirculars { get; set; }
     public DbSet<Teacher> Teachers { get; set; }
 

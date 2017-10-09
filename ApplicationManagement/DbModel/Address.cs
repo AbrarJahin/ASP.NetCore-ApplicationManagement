@@ -9,13 +9,18 @@ namespace ApplicationManagement.DbModel
         [Key]
         public long Id { get; set; }
 
-        public virtual Teacher Teacher { get; set; }
-
+        [Required]
         public string HoldingNoOrVillage { get; set; }
+        [Required]
         public string RoadBlockSector { get; set; }
+        [Required]
         public string Thana { get; set; }
+        [Required]
         public string PostOffice { get; set; }
+        [Required]
         public string District { get; set; }
+        [Required]
+        [Phone]
         public string PhoneNumber { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using ApplicationManagement.DbModel;
 using static ApplicationManagement.DbModel.CustomTypes;
+using System.Collections.Generic;
 
 namespace ApplicationManagement.Controllers
 {
@@ -38,7 +39,7 @@ namespace ApplicationManagement.Controllers
 
                 JobCircular jobCircular = context.JobCirculars
                                             .SingleOrDefault(j => j.Id == 1);
-                /*
+                
                 Address presentAddress = new Address
                 {
                     HoldingNoOrVillage = "1234",
@@ -48,7 +49,7 @@ namespace ApplicationManagement.Controllers
                     District = "Barisal",
                     PhoneNumber = "+8801822804636"
                 };
-
+                
                 Address permanentAddress = new Address
                 {
                     HoldingNoOrVillage = "86/3",
@@ -73,7 +74,7 @@ namespace ApplicationManagement.Controllers
                     };
                     educationalResults.Add(education);
                 }
-                */
+
                 context.Teachers.Add(new Teacher
                 {
                     JobCircular = jobCircular,
@@ -87,15 +88,15 @@ namespace ApplicationManagement.Controllers
 
                     DateOfbirth = DateTime.ParseExact("31/12/1992", "dd/MM/yyyy", CultureInfo.InvariantCulture),
 
-                    //PresentAddress = presentAddress,
-                    //PermanentAddress = permanentAddress,
+                    PresentAddress = presentAddress,
+                    PermanentAddress = permanentAddress,
 
                     Nationality = "Bangladeshi",
                     MaritalStatus = IsMarried.Unmarried,
                     Religion = ReligionName.Islam,
                     NId = rnd.Next(100000000, 2147483647).ToString(),
 
-                    //EducationalResults = educationalResults,
+                    EducationalResults = educationalResults,
                     HasContactWithAnyOrganization = Decision.No,
                     IsEverSuspended = Decision.No,
                     IsGettingPension = Decision.No,

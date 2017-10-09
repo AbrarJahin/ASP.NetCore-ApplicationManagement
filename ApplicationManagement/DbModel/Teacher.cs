@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static ApplicationManagement.DbModel.CustomTypes;
 
 namespace ApplicationManagement.DbModel
@@ -31,8 +33,18 @@ namespace ApplicationManagement.DbModel
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public TimeSpan AgeAtLastDateOfSubmission { get; set; }
 
-        //public virtual Address PresentAddress { get; set; }     //No 6 in form
-        //public virtual Address PermanentAddress { get; set; }   //No 7 in form
+        //No 6 in form
+        public long PresentAddressId { get; set; }
+        [ForeignKey("PresentAddressId")]
+        [Required]
+        public virtual Address PresentAddress { get; set; }
+
+        //No 7 in form
+        public long PermanentAddressId { get; set; }
+        [ForeignKey("PermanentAddressId")]
+        [Required]
+        public virtual Address PermanentAddress { get; set; }
+
         [Required]
         public string Nationality { get; set; }         //No 8 in form
         [Required]
@@ -42,7 +54,7 @@ namespace ApplicationManagement.DbModel
         [Required]
         public string NId { get; set; }                 //No 11 in form
 
-        //public virtual ICollection<EducationResult> EducationalResults { get; set; }   //No 12 in form
+        public virtual ICollection<EducationResult> EducationalResults { get; set; }   //No 12 in form
 
         //public virtual ICollection<ResearchDegree> ResearchDegries { get; set; }        //No 13 in form
         //public virtual ICollection<Research> Researches { get; set; }                   //No 14 in form
@@ -110,7 +122,7 @@ namespace ApplicationManagement.DbModel
             AddedDate = DateTime.UtcNow;
             LastModifiedDate = DateTime.UtcNow;
 
-            AgeAtLastDateOfSubmission = JobCircular.EndDate - DateOfbirth;
+            AgeAtLastDateOfSubmission =  DateTime.UtcNow - DateOfbirth;
             IsPaymentDone = PaymentStatus.Pending;
         }
     }

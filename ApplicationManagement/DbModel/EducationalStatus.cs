@@ -8,8 +8,10 @@ namespace ApplicationManagement.DbModel
     {
         [Key]
         public long Id { get; set; }
-        [ForeignKey("Teacher")]
-        public UInt64 TeacherId { get; set; }
+
+        public long TeacherId { get; set; }
+        [ForeignKey("TeacherId")]
+        public virtual Teacher Teacher { get; set; }
 
         public string ExamName { get; set; }
         public string BoardOrUniversity { get; set; }
