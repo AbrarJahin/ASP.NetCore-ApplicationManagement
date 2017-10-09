@@ -9,19 +9,28 @@ namespace ApplicationManagement.DbModel
     {
         [Key]
         public long Id { get; set; }
-        [ForeignKey("Teacher")]
-        public UInt64 TeacherId { get; set; }
 
+        public long TeacherId { get; set; }
+        [ForeignKey("TeacherId")]
+        public virtual Teacher Teacher { get; set; }
+
+        [Required]
         public string NameOfPost { get; set; }
+        [Required]
         public string NameOfOrganization { get; set; }
+        [Required]
         public OrganizationType OrganizationType { get; set; }
+        [Required]
         public UInt16 SalaryScale { get; set; }
+        [Required]
         public UInt16 TotalSalary { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
+        [Required]
         public DateTime StartDate { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
+        [Required]
         public DateTime EndDate { get; set; }
 
         public TimeSpan ExperienceTime { get; set; }

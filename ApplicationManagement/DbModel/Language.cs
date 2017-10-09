@@ -8,10 +8,14 @@ namespace ApplicationManagement.DbModel
     {
         [Key]
         public long Id { get; set; }
-        [ForeignKey("Teacher")]
-        public UInt64 TeacherId { get; set; }
 
+        public long TeacherId { get; set; }
+        [ForeignKey("TeacherId")]
+        public virtual Teacher Teacher { get; set; }
+
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Skill { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]

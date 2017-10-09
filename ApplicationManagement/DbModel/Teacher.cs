@@ -56,21 +56,21 @@ namespace ApplicationManagement.DbModel
 
         public virtual ICollection<EducationResult> EducationalResults { get; set; }   //No 12 in form
 
-        //public virtual ICollection<ResearchDegree> ResearchDegries { get; set; }        //No 13 in form
-        //public virtual ICollection<Research> Researches { get; set; }                   //No 14 in form
-        //public virtual ICollection<Language> Languages { get; set; }                    //No 15 in form
-        //public virtual ICollection<Training> Trainings { get; set; }                    //No 16 in form
-        //public virtual ICollection<Experience> Experiences { get; set; }                //No 17 in form
+        public virtual ICollection<ResearchDegree> ResearchDegries { get; set; }        //No 13 in form
+        public virtual ICollection<Research> Researches { get; set; }                   //No 14 in form
+        public virtual ICollection<Language> Languages { get; set; }                    //No 15 in form
+        public virtual ICollection<Training> Trainings { get; set; }                    //No 16 in form
+        public virtual ICollection<Experience> Experiences { get; set; }                //No 17 in form
 
         //No 18 in form
         [Required]
         public Decision HasContactWithAnyOrganization { get; set; }
         public string OrganizationContactDescription { get; set; }
 
-        //public virtual ICollection<Reference> References { get; set; }                  //No 19 in form
+        public virtual ICollection<Reference> References { get; set; }                  //No 19 in form
 
         public string VolunteerExperience { get; set; }                                   //No 20 in form
-        //public virtual ICollection<Country> VisitedCountries { get; set; }              //No 21 in form
+        public virtual ICollection<Country> VisitedCountries { get; set; }              //No 21 in form
 
         //No 22 in form
         [Required]

@@ -75,6 +75,97 @@ namespace ApplicationManagement.Controllers
                     educationalResults.Add(education);
                 }
 
+                ICollection<Country> countries = new List<Country>();
+                for (int i = 0; i < 4; i++)
+                {
+                    Country country = new Country
+                    {
+                        Name = i.ToString()
+                    };
+                    countries.Add(country);
+                }
+
+                ICollection<Experience> experiences = new List<Experience>();
+                for (int i = 0; i < 4; i++)
+                {
+                    Experience experience = new Experience
+                    {
+                        NameOfPost = i.ToString(),
+                        NameOfOrganization = i.ToString(),
+                        OrganizationType = OrganizationType.Government,
+                        SalaryScale = (UInt16)rnd.Next(1999, 2017),
+                        TotalSalary = (UInt16)rnd.Next(1999, 2017),
+                        StartDate = DateTime.UtcNow,
+                        EndDate = DateTime.UtcNow
+                    };
+                    experiences.Add(experience);
+                }
+
+                ICollection<Language> languages = new List<Language>();
+                for (int i = 0; i < 4; i++)
+                {
+                    Language language = new Language
+                    {
+                        Name = i.ToString(),
+                        Skill = i.ToString()
+                    };
+                    languages.Add(language);
+                }
+
+                ICollection<Reference> referances = new List<Reference>();
+                for (int i = 0; i < 4; i++)
+                {
+                    Reference referance = new Reference
+                    {
+                        Name = i.ToString(),
+                        Identity = i.ToString(),
+                        Address = i.ToString(),
+                        Phone = "01719022029"
+                    };
+                    referances.Add(referance);
+                }
+
+                ICollection<ResearchDegree> researchDegrees = new List<ResearchDegree>();
+                for (int i = 0; i < 4; i++)
+                {
+                    ResearchDegree researchDegree = new ResearchDegree
+                    {
+                        NameOfDegree = i.ToString(),
+                        SubjectOfResearch = i.ToString(),
+                        SupervisorsNameAndAddress = i.ToString(),
+                        UniversityName = i.ToString(),
+                        YearOfPassing = (UInt16)i
+                    };
+                    researchDegrees.Add(researchDegree);
+                }
+
+                ICollection<Research> researches = new List<Research>();
+                for (int i = 0; i < 4; i++)
+                {
+                    Research research = new Research
+                    {
+                        NameOfPublication = i.ToString(),
+                        NameOfPublicationPaper = i.ToString(),
+                        NameOfPublicationInstitute = i.ToString(),
+                        DateOfPublication = DateTime.UtcNow,
+                        EditionOfPublication = i.ToString()
+                    };
+                    researches.Add(research);
+                }
+
+                ICollection<Training> trainings = new List<Training>();
+                for (int i = 0; i < 4; i++)
+                {
+                    Training training = new Training
+                    {
+                        Name = i.ToString(),
+                        Description = i.ToString(),
+                        StartDate = DateTime.UtcNow,
+                        EndDate = DateTime.UtcNow
+                    };
+                    trainings.Add(training);
+                }
+
                 context.Teachers.Add(new Teacher
                 {
                     JobCircular = jobCircular,
@@ -97,7 +188,14 @@ namespace ApplicationManagement.Controllers
                     NId = rnd.Next(100000000, 2147483647).ToString(),
 
                     EducationalResults = educationalResults,
+                    ResearchDegries = researchDegrees,
+                    Researches = researches,
+                    Trainings = trainings,
+                    Experiences = experiences,
+                    Languages = languages,
                     HasContactWithAnyOrganization = Decision.No,
+                    References = referances,
+                    VisitedCountries = countries,
                     IsEverSuspended = Decision.No,
                     IsGettingPension = Decision.No,
                     IsInvolvedWithAnyAssociation = Decision.No,

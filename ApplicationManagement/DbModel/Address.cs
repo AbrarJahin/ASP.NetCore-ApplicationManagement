@@ -19,8 +19,8 @@ namespace ApplicationManagement.DbModel
         public string PostOffice { get; set; }
         [Required]
         public string District { get; set; }
-        [Required]
         [Phone]
+        [Required]
         public string PhoneNumber { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
