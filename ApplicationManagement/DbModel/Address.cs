@@ -7,7 +7,7 @@ namespace ApplicationManagement.DbModel
     public class Address
     {
         [Key]
-        public UInt64 Id { get; set; }
+        public long Id { get; set; }
 
         public virtual Teacher Teacher { get; set; }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +17,9 @@ namespace ApplicationManagement.Controllers
                 context.JobCirculars.Add(new JobCircular
                 {
                     Name = "Try Application",
+                    Detail = "Anything",
                     StartDate = DateTime.UtcNow,
-                    EndDate = DateTime.UtcNow,
-                    Detail = "Anything"
+                    EndDate = DateTime.UtcNow
                 });
                 await context.SaveChangesAsync();
             }
@@ -37,11 +36,8 @@ namespace ApplicationManagement.Controllers
                 Random rnd = new Random();
                 UInt16 year = (UInt16)rnd.Next(1999, 2017);
 
-                var jobCircular1 = context.JobCirculars;
-
                 JobCircular jobCircular = context.JobCirculars
                                             .SingleOrDefault(j => j.Id == 1);
-
                 /*
                 Address presentAddress = new Address
                 {
@@ -62,7 +58,7 @@ namespace ApplicationManagement.Controllers
                     District = "Khulna",
                     PhoneNumber = "+8801521251799"
                 };
-                
+
                 ICollection<EducationResult> educationalResults = new List<EducationResult>();
                 for (int i = 0; i < 4; i++)
                 {
@@ -90,7 +86,6 @@ namespace ApplicationManagement.Controllers
                     SpouceName = "N/A",
 
                     DateOfbirth = DateTime.ParseExact("31/12/1992", "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                    AgeAtLastDateOfSubmission = DateTime.UtcNow - DateTime.ParseExact("31/12/1992", "dd/MM/yyyy", CultureInfo.InvariantCulture),
 
                     //PresentAddress = presentAddress,
                     //PermanentAddress = permanentAddress,
@@ -100,7 +95,17 @@ namespace ApplicationManagement.Controllers
                     Religion = ReligionName.Islam,
                     NId = rnd.Next(100000000, 2147483647).ToString(),
 
-                    //EducationalResults = educationalResults
+                    //EducationalResults = educationalResults,
+                    HasContactWithAnyOrganization = Decision.No,
+                    IsEverSuspended = Decision.No,
+                    IsGettingPension = Decision.No,
+                    IsInvolvedWithAnyAssociation = Decision.No,
+
+                    BankDraftOrPayOrderNo = rnd.Next(100000000, 2147483647).ToString(),
+                    DateOfDraftOrOrder = DateTime.UtcNow,
+                    AmountOfMoney = (UInt16)rnd.Next(100, 9999),
+                    NameOfBank = rnd.Next(100000000, 2147483647).ToString(),
+                    BranchOfBank = rnd.Next(100000000, 2147483647).ToString(),
                 });
 
                 //jobCircular.Teachers.Add();

@@ -7,7 +7,7 @@ namespace ApplicationManagement.DbModel
     public class Training
     {
         [Key]
-        public UInt64 Id { get; set; }
+        public long Id { get; set; }
         [ForeignKey("Teacher")]
         public UInt64 TeacherId { get; set; }
 
