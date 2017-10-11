@@ -6,6 +6,7 @@ using System.Globalization;
 using ApplicationManagement.DbModel;
 using static ApplicationManagement.DbModel.CustomTypes;
 using System.Collections.Generic;
+using ApplicationManagement.ViewModel;
 
 namespace ApplicationManagement.Controllers
 {
@@ -177,7 +178,7 @@ namespace ApplicationManagement.Controllers
                     MotherName = "Jinatun Nissaa",
                     SpouceName = "N/A",
 
-                    DateOfbirth = DateTime.ParseExact("31/12/1992", "dd/MM/yyyy", CultureInfo.InvariantCulture),
+                    DateOfBirth = DateTime.ParseExact("31/12/1992", "dd/MM/yyyy", CultureInfo.InvariantCulture),
 
                     PresentAddress = presentAddress,
                     PermanentAddress = permanentAddress,
@@ -185,7 +186,7 @@ namespace ApplicationManagement.Controllers
                     Nationality = "Bangladeshi",
                     MaritalStatus = IsMarried.Unmarried,
                     Religion = ReligionName.Islam,
-                    NId = rnd.Next(100000000, 2147483647).ToString(),
+                    NId = 19924792106000500+(UInt64)rnd.Next(100000000, 2147483647),
 
                     EducationalResults = educationalResults,
                     ResearchDegries = researchDegrees,
@@ -215,9 +216,17 @@ namespace ApplicationManagement.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Please enter data";
 
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult ContactPost(TeacherApplication teacherApplication)
+        {
+            ViewData["Message"] = teacherApplication.BengaliName;
+
+            return View("~/Views/Home/Contact.cshtml");
         }
 
         public IActionResult Error()

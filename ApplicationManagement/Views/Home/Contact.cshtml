@@ -1,17 +1,210 @@
-﻿@{
+﻿@model ApplicationManagement.ViewModel.TeacherApplication
+
+@{
     ViewData["Title"] = "Contact";
 }
+
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<form asp-controller="Home" asp-action="ContactPost" method="post">
+    <div class="form-group">
+        <label asp-for="BengaliName">Bengali Name :</label>
+        <input asp-for="BengaliName" type="text" class="form-control" />
+        <span asp-validation-for="BengaliName" class="text-danger"></span>
+    </div>
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <div class="form-group">
+        <label asp-for="EnglishName">English Name :</label>
+        <input asp-for="EnglishName" type="text" class="form-control" />
+        <span asp-validation-for="EnglishName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NickName">Nick Name :</label>
+        <input asp-for="NickName" type="text" class="form-control" />
+        <span asp-validation-for="NickName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FatherName">Father Name :</label>
+        <input asp-for="FatherName" type="text" class="form-control" />
+        <span asp-validation-for="FatherName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SpouceName">Spouce Name :</label>
+        <input asp-for="SpouceName" type="text" class="form-control" />
+        <span asp-validation-for="SpouceName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MotherName">Mother Name :</label>
+        <input asp-for="MotherName" type="text" class="form-control" />
+        <span asp-validation-for="MotherName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DateOfBirth">Mother Name :</label>
+        <input asp-for="DateOfBirth" type="date" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Nationality">Mother Name :</label>
+        <input asp-for="Nationality" type="text" class="form-control" />
+        <span asp-validation-for="Nationality" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MaritalStatus">Marital Status :</label>
+        @*
+        <br /> <input type="radio" asp-for="MaritalStatus" value=0 class="radio-inline">Unmarried
+        <br /> <input type="radio" asp-for="MaritalStatus" value=1 class="radio-inline">Married
+        *@
+        <select asp-for="MaritalStatus" class="form-control">
+            <option value=0>Unmarried</option>
+            <option value=1>Married</option>
+        </select>
+        <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Religion">Religion :</label>
+        <select asp-for="Religion" class="form-control">
+            <option value=0>Islam</option>
+            <option value=1>Hinduism</option>
+            <option value=2>Buddhists</option>
+            <option value=3>Christians</option>
+            <option value=4>Animists</option>
+            <option value=5>Atheist</option>
+        </select>
+        <span asp-validation-for="Religion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NId">National ID Card No :</label>
+        <input asp-for="NId" type="number" min="1000000000" max="99999999999999999" class="form-control" />
+        <span asp-validation-for="NId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="HasContactWithAnyOrganization">Do you have any Contact With Any Organization :</label>
+        <select asp-for="HasContactWithAnyOrganization" class="form-control">
+            <option value=0>Yes</option>
+            <option value=1>No</option>
+            <option value=2>No Comment</option>
+        </select>
+        <span asp-validation-for="HasContactWithAnyOrganization" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrganizationContactDescription">Do you have any Contact With Any Organization :</label>
+        <textarea asp-for="OrganizationContactDescription" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="OrganizationContactDescription" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VolunteerExperience">Volunteer Experience :</label>
+        <textarea asp-for="VolunteerExperience" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="VolunteerExperience" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsEverSuspended">Do you Ever Suspended Before :</label>
+        <select asp-for="IsEverSuspended" class="form-control">
+            <option value=0>Yes</option>
+            <option value=1>No</option>
+            <option value=2>No Comment</option>
+        </select>
+        <span asp-validation-for="IsEverSuspended" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SuspensionReason">Reason of Suspension :</label>
+        <textarea asp-for="SuspensionReason" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="SuspensionReason" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsGettingPension">Do you Getting Pension from anywhere :</label>
+        <select asp-for="IsGettingPension" class="form-control">
+            <option value=0>Yes</option>
+            <option value=1>No</option>
+        </select>
+        <span asp-validation-for="IsGettingPension" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PensionAmount">Pension Amount (if you get) :</label>
+        <input asp-for="PensionAmount" type="number" min="100000" max="999999999999" class="form-control" />
+        <span asp-validation-for="PensionAmount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PensionOrganizationName">From What Organization You Are Getting Pension :</label>
+        <input asp-for="PensionOrganizationName" type="text" class="form-control" />
+        <span asp-validation-for="PensionOrganizationName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsInvolvedWithAnyAssociation">Do you Involved With Any Association :</label>
+        <select asp-for="IsInvolvedWithAnyAssociation" class="form-control">
+            <option value=0>Yes</option>
+            <option value=1>No</option>
+        </select>
+        <span asp-validation-for="IsInvolvedWithAnyAssociation" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NameOfAssociation">Name Of The Association If You Are Involved :</label>
+        <input asp-for="NameOfAssociation" type="text" class="form-control" />
+        <span asp-validation-for="NameOfAssociation" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DescriptionOfAssociation">Description Of The Association If You Are Involved :</label>
+        <textarea asp-for="DescriptionOfAssociation" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="DescriptionOfAssociation" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BankDraftOrPayOrderNo">Bank Draft / Pay Order No :</label>
+        <input asp-for="BankDraftOrPayOrderNo" type="text" class="form-control" />
+        <span asp-validation-for="BankDraftOrPayOrderNo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DateOfDraftOrOrder">Date Of Bank Draft / Pay Order :</label>
+        <input asp-for="DateOfDraftOrOrder" type="date" class="form-control" />
+        <span asp-validation-for="DateOfDraftOrOrder" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AmountOfMoney">Amount Of Bank Draft / Pay Order Money :</label>
+        <input asp-for="AmountOfMoney" type="number" min="1000000000" max="99999999999999999" class="form-control" />
+        <span asp-validation-for="AmountOfMoney" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NameOfBank">Bank Name Where You Have Paid Draft / Pay Order :</label>
+        <input asp-for="NameOfBank" type="text" class="form-control" />
+        <span asp-validation-for="NameOfBank" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BranchOfBank">Branch Of Bank Where You Have Paid Draft / Pay Order :</label>
+        <input asp-for="BranchOfBank" type="text" class="form-control" />
+        <span asp-validation-for="BranchOfBank" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ExtraInformation">Extra Information :</label>
+        <textarea asp-for="ExtraInformation" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="ExtraInformation" class="text-danger"></span>
+    </div>
+
+    <div>
+        <input type="submit" class="btn btn-default" value="Save and Next" />
+    </div>
+</form>

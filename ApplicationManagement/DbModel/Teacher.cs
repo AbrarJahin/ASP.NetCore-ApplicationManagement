@@ -29,7 +29,7 @@ namespace ApplicationManagement.DbModel
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         [Required]
-        public DateTime DateOfbirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public TimeSpan AgeAtLastDateOfSubmission { get; set; }
 
@@ -52,7 +52,7 @@ namespace ApplicationManagement.DbModel
         [Required]
         public ReligionName Religion { get; set; }      //No 10 in form
         [Required]
-        public string NId { get; set; }                 //No 11 in form
+        public UInt64 NId { get; set; }                 //No 11 in form
 
         public virtual ICollection<EducationResult> EducationalResults { get; set; }   //No 12 in form
 
@@ -122,7 +122,7 @@ namespace ApplicationManagement.DbModel
             AddedDate = DateTime.UtcNow;
             LastModifiedDate = DateTime.UtcNow;
 
-            AgeAtLastDateOfSubmission =  DateTime.UtcNow - DateOfbirth;
+            AgeAtLastDateOfSubmission =  DateTime.UtcNow - DateOfBirth;
             IsPaymentDone = PaymentStatus.Pending;
         }
     }
