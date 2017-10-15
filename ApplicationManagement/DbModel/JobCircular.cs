@@ -30,7 +30,7 @@ namespace ApplicationManagement.DbModel
         [DataType(DataType.Date)]
         public DateTime LastModifiedDate { get; set; }
 
-        public virtual ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<TeacherApplication> Teachers { get; set; }
 
         public JobCircular()
         {

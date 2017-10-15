@@ -53,6 +53,7 @@
                     <li class="@(pageName == "Home.About" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="@(pageName == "JobCircular.Index" ? "active" : "")"><a asp-area="" asp-controller="JobCircular" asp-action="Index">Job Circulers</a></li>
                     <li class="@(pageName == "Home.Contact" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
             </div>
@@ -66,6 +67,7 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year.ToString() - বরিশাল বিশ্ববিদ্যালয়</p>
+            @pageName
         </footer>
     </div>
 

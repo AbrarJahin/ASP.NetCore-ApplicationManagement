@@ -6,7 +6,7 @@ using static ApplicationManagement.DbModel.CustomTypes;
 
 namespace ApplicationManagement.DbModel
 {
-    public class Teacher
+    public class TeacherApplication
     {
         [Key]
         public long Id { get; set; }
@@ -107,6 +107,7 @@ namespace ApplicationManagement.DbModel
         public string ExtraInformation { get; set; }            //No 26 in form
 
         public bool IsApplicationFinalised { get; set; }
+        public Decision IsPaperApplicationReceived { get; set; }
         public SelectionStatus IsSelectedForExam { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
@@ -117,7 +118,7 @@ namespace ApplicationManagement.DbModel
         [DataType(DataType.Date)]
         public DateTime LastModifiedDate { get; set; }
 
-        public Teacher()
+        public TeacherApplication()
         {
             AddedDate = DateTime.UtcNow;
             LastModifiedDate = DateTime.UtcNow;

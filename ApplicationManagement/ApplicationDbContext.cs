@@ -14,7 +14,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Reference> References { get; set; }
     public DbSet<Research> Researches { get; set; }
     public DbSet<ResearchDegree> ResearchDegrees { get; set; }
-    public DbSet<Teacher> Teachers { get; set; }
+    public DbSet<TeacherApplication> Teachers { get; set; }
     public DbSet<Training> Trainings { get; set; }
 
     //Configure Database Settings

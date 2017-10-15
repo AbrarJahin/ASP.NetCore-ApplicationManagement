@@ -11,7 +11,7 @@ namespace ApplicationManagement.DbModel
 
         public long TeacherId { get; set; }
         [ForeignKey("TeacherId")]
-        public virtual Teacher Teacher { get; set; }
+        public virtual TeacherApplication Teacher { get; set; }
 
         public string ExamName { get; set; }
         public string BoardOrUniversity { get; set; }

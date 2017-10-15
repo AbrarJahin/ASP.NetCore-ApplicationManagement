@@ -167,7 +167,7 @@ namespace ApplicationManagement.Controllers
                     trainings.Add(training);
                 }
 
-                context.Teachers.Add(new Teacher
+                context.Teachers.Add(new DbModel.TeacherApplication
                 {
                     JobCircular = jobCircular,
                     BengaliName = "আবরার",
@@ -222,7 +222,7 @@ namespace ApplicationManagement.Controllers
         }
 
         [HttpPost]
-        public IActionResult ContactPost(TeacherApplication teacherApplication)
+        public IActionResult ContactPost(ViewModel.TeacherApplication teacherApplication)
         {
             ViewData["Message"] = teacherApplication.BengaliName;
 
