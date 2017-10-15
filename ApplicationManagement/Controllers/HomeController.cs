@@ -167,7 +167,7 @@ namespace ApplicationManagement.Controllers
                     trainings.Add(training);
                 }
 
-                context.Teachers.Add(new DbModel.TeacherApplication
+                context.TeacherApplications.Add(new DbModel.TeacherApplication
                 {
                     JobCircular = jobCircular,
                     BengaliName = "আবরার",
