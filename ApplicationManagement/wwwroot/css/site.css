@@ -8,3 +8,7 @@ body {
         padding-top: 56px;
     }
 }
+
+.vertical-middle {
+    vertical-align: middle;
+}

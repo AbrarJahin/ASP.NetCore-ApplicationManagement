@@ -1,4 +1,8 @@
-﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+﻿@{
+    string pageName = ViewContext.RouteData.Values["controller"].ToString() +"."+ ViewContext.RouteData.Values["action"].ToString();
+}
+
+@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +14,18 @@
     <meta name="author" content="S. M. Abrar Jahin">
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/css/bootstrap-datepicker.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.min.css"
+              asp-fallback-href="~/lib/css/bootstrap-datepicker.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        @*Test code for Datepicker CSS CDN should be updated*@
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
@@ -40,17 +49,17 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li class="@(pageName == "Home.Index" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="@(pageName == "Home.About" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="@(pageName == "Home.Contact" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container body-content">
+    <div class="container">
         <h1 class="mt-5">@ViewData["Title"]</h1>
         <hr />
         @RenderBody()
@@ -61,8 +70,9 @@
     </div>
 
     <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/js/jquery.min.js"></script>
+        <script src="~/lib/js/bootstrap.min.js"></script>
+        <script src="~/lib/js/bootstrap-datepicker.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
@@ -78,6 +88,13 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery.datepicker"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txb">
+        </script>
+        @*Test code for Datepicker JS CDN should be updated*@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

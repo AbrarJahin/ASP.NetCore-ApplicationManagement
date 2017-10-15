@@ -1,7 +1,61 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
+
+
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<form class="form-horizontal">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="BengaliName" class="control-label col-xs-4 vertical-middle">Bengali Name Bengali Name Bengali Name Bengali Name </label>
+                <div class="col-xs-8">
+                    <input type="email" class="form-control" placeholder="Email" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputPassword" class="control-label col-xs-4 vertical-middle">Anything</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" placeholder="Password" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputPassword" class="control-label col-xs-4 vertical-middle">End</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" placeholder="Date Of Birth" required>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="BengaliName" class="control-label col-xs-4 vertical-middle">Birth Place </label>
+                <div class="col-xs-8">
+                    <input type="email" class="form-control" placeholder="Email" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputPassword" class="control-label col-xs-4 vertical-middle">Date Of Birth</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control DatePicker" placeholder="Date Of Birth" required>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-offset-4 col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block">Next</button>
+        </div>
+    </div>
+</form>
