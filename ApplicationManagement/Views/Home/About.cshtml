@@ -398,7 +398,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PensionAmount" class="control-label col-xs-4 vertical-middle">
-                        পেনশনের পরিমান টাকায় (Pension Amount in Taka)
+                        পেনশনের পরিমান টাকায়
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="PensionAmount" placeholder="Pension Amount" type="number" min="100000" max="999999999999" class="form-control" />
@@ -409,10 +409,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PensionOrganizationName" class="control-label col-xs-4 vertical-middle">
-                        যেই প্রথিষ্ঠান থেকে পেনশন পাচ্ছেন (From What Organization You Are Getting Pension)
+                        যেই প্রথিষ্ঠান থেকে পেনশন পাচ্ছেন
                     </label>
                     <div class="col-xs-8">
-                        <textarea asp-for="PensionOrganizationName" placeholder="Pension Organization Name" class="form-control" rows="5"></textarea>
+                        <textarea asp-for="PensionOrganizationName" placeholder="From What Organization You Are Getting Pension" class="form-control" rows="5"></textarea>
                         <span asp-validation-for="PensionOrganizationName" class="text-danger"></span>
                     </div>
                 </div>
@@ -442,7 +442,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="NameOfAssociation" class="control-label col-xs-4 vertical-middle">
-                        জড়িত হলে সংস্থার নাম (Name Of The Association If Yes)
+                        জড়িত হলে সংস্থার নাম
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="NameOfAssociation" placeholder="Name Of The Association If You Are Involved" type="text" class="form-control" required />
@@ -453,10 +453,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="DescriptionOfAssociation" class="control-label col-xs-4 vertical-middle">
-                        জড়িত হলে সংস্থার বিবরণ (Description of the Association If Yes)
+                        জড়িত হলে সংস্থার বিবরণ
                     </label>
                     <div class="col-xs-8">
-                        <textarea asp-for="DescriptionOfAssociation" placeholder="Description Of Association" class="form-control" rows="5"></textarea>
+                        <textarea asp-for="DescriptionOfAssociation" placeholder="Description of the Association If Yes" class="form-control" rows="5"></textarea>
                         <span asp-validation-for="DescriptionOfAssociation" class="text-danger"></span>
                     </div>
                 </div>
@@ -516,7 +516,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="BranchOfBank" class="control-label col-xs-4 vertical-middle">
-                        শাখা
+                        ব্যাংকের শাখা
                     </label>
                     <div class="col-xs-8">
                         <textarea asp-for="BranchOfBank" placeholder="Branch Of Bank Where You Have Paid Draft / Pay Order" class="form-control" rows="5" required></textarea>
