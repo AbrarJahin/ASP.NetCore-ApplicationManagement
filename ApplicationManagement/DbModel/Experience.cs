@@ -33,6 +33,8 @@ namespace ApplicationManagement.DbModel
         [Required]
         public DateTime EndDate { get; set; }
 
+        public string CertificatePdfFileUrl { get; set; }
+
         public TimeSpan ExperienceTime { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]

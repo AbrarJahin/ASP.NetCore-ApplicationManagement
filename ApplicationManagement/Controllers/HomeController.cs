@@ -31,7 +31,7 @@ namespace ApplicationManagement.Controllers
 
         public async Task<IActionResult> About()
         {
-            ViewData["Message"] = "You Have Created a New Application";
+            ViewData["Message"] = "Application For Applying As A Teacher";
 
             using (var context = new ApplicationDbContext())
             {
@@ -47,8 +47,7 @@ namespace ApplicationManagement.Controllers
                     RoadBlockSector = "28",
                     Thana = "Kotawoli",
                     PostOffice = "Rupatoli",
-                    District = "Barisal",
-                    PhoneNumber = "+8801822804636"
+                    District = "Barisal"
                 };
                 
                 Address permanentAddress = new Address
@@ -57,8 +56,7 @@ namespace ApplicationManagement.Controllers
                     RoadBlockSector = "2 No Cross Road",
                     Thana = "Daulatpur",
                     PostOffice = "Daulatpur",
-                    District = "Khulna",
-                    PhoneNumber = "+8801521251799"
+                    District = "Khulna"
                 };
 
                 ICollection<EducationResult> educationalResults = new List<EducationResult>();
@@ -177,6 +175,9 @@ namespace ApplicationManagement.Controllers
                     FatherName = "Joynal Abedin",
                     MotherName = "Jinatun Nissaa",
                     SpouceName = "N/A",
+
+                    PhoneNumber = "01822804636",
+                    Email = "abrarjahin@live.com",
 
                     DateOfBirth = DateTime.ParseExact("31/12/1992", "dd/MM/yyyy", CultureInfo.InvariantCulture),
 

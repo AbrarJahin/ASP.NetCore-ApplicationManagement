@@ -12,6 +12,11 @@ namespace ApplicationManagement.DbModel
         public long Id { get; set; }
         [Required]
         public virtual JobCircular JobCircular { get; set; }
+
+        //No 0 in form
+        //[Required]
+        public string ProfileImageFileUrl { get; set; }
+
         //No 1 in form
         [Required]
         public string BengaliName { get; set; }
@@ -19,6 +24,13 @@ namespace ApplicationManagement.DbModel
         public string EnglishName { get; set; }
         [Required]
         public string NickName{ get; set; }
+
+        [Required, MinLength(9), MaxLength(16)]
+        [Phone]
+        public string PhoneNumber { get; set; }
+        [Required, MinLength(4), MaxLength(50)]
+        [EmailAddress]
+        public string Email { get; set; }
 
         [Required]
         public string FatherName { get; set; }  //No 2 in form

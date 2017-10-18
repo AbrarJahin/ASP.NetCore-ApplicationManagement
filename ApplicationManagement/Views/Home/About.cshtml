@@ -1,57 +1,554 @@
-﻿@{
+﻿@model ApplicationManagement.ViewModel.TeacherApplication
+
+@{
     ViewData["Title"] = "About";
 }
 
-
-<h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
 
-<form class="form-horizontal">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="BengaliName" class="control-label col-xs-4 vertical-middle">Bengali Name Bengali Name Bengali Name Bengali Name </label>
-                <div class="col-xs-8">
-                    <input type="email" class="form-control" placeholder="Email" required>
+<form asp-controller="Home" asp-action="ContactPost" method="post" class="form-horizontal">
+    @* Name *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">নাম (Name)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="BengaliName" class="control-label col-xs-4 vertical-middle">
+                        বাংলা নাম
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="BengaliName" placeholder="Bengali Name" type="text" class="form-control" required />
+                        <span asp-validation-for="BengaliName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="EnglishName" class="control-label col-xs-4 vertical-middle">
+                        ইংরেজি নাম
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="EnglishName" placeholder="English Name" type="text" class="form-control" required />
+                        <span asp-validation-for="BengaliName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NickName" class="control-label col-xs-4 vertical-middle">
+                        প্রার্থী যে নামে পরিচিত
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="NickName" placeholder="Nick Name" type="text" class="form-control" required />
+                        <span asp-validation-for="NickName" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="inputPassword" class="control-label col-xs-4 vertical-middle">Anything</label>
-                <div class="col-xs-8">
-                    <input type="text" class="form-control" placeholder="Password" required>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="inputPassword" class="control-label col-xs-4 vertical-middle">End</label>
-                <div class="col-xs-8">
-                    <input type="text" class="form-control" placeholder="Date Of Birth" required>
-                </div>
-            </div>
-        </div>
-    </div>
+    </fieldset>
+    @* ./Name *@
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="BengaliName" class="control-label col-xs-4 vertical-middle">Birth Place </label>
-                <div class="col-xs-8">
-                    <input type="email" class="form-control" placeholder="Email" required>
+    @* Personal Information *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">বাক্তিগত তথ্য (Personal Information)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DateOfBirth" class="control-label col-xs-4 vertical-middle">
+                        জন্ম তারিখ
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="DateOfBirth" placeholder="Date Of Birth" type="text" class="form-control DatePicker" required />
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Nationality" class="control-label col-xs-4 vertical-middle">
+                        জাতীয়তা
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="Nationality" placeholder="Nationality" type="text" class="form-control" required />
+                        <span asp-validation-for="Nationality" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NId" class="control-label col-xs-4 vertical-middle">
+                        জাতীয় পরিচয় পত্র নং
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="NId" placeholder="National ID Card No" type="text" class="form-control" required />
+                        <span asp-validation-for="NId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Religion" class="control-label col-xs-4 vertical-middle">
+                        ধর্ম
+                    </label>
+                    <div class="col-xs-8">
+                        <select asp-for="Religion" class="form-control">
+                            <option value=0>Islam</option>
+                            <option value=1>Hinduism</option>
+                            <option value=2>Buddhists</option>
+                            <option value=3>Christians</option>
+                            <option value=4>Animists</option>
+                            <option value=5>Atheist</option>
+                        </select>
+                        <span asp-validation-for="Religion" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="MaritalStatus" class="control-label col-xs-4 vertical-middle">
+                        বৈবাহিক অবস্থা
+                    </label>
+                    <div class="col-xs-8">
+                        @*
+                            <br /> <input type="radio" asp-for="MaritalStatus" value=0 class="radio-inline">Unmarried
+                            <br /> <input type="radio" asp-for="MaritalStatus" value=1 class="radio-inline">Married
+                        *@
+                        <select asp-for="MaritalStatus" class="form-control">
+                            <option value=0>Unmarried</option>
+                            <option value=1>Married</option>
+                        </select>
+                        <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="inputPassword" class="control-label col-xs-4 vertical-middle">Date Of Birth</label>
-                <div class="col-xs-8">
-                    <input type="text" class="form-control DatePicker" placeholder="Date Of Birth" required>
+    </fieldset>
+    @* ./Personal Information *@
+    
+    @* Family Information  *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">পারিবারিক তথ্য (Family Information)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="FatherName" class="control-label col-xs-4 vertical-middle">
+                        পিতার নাম
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="FatherName" placeholder="Father Name" type="text" class="form-control" required />
+                        <span asp-validation-for="FatherName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="MotherName" class="control-label col-xs-4 vertical-middle">
+                        মাতার নাম
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="MotherName" placeholder="Mother Name" type="text" class="form-control" required />
+                        <span asp-validation-for="MotherName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="SpouceName" class="control-label col-xs-4 vertical-middle">
+                        স্বামী / স্ত্রীর নাম
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="SpouceName" placeholder="Spouce Name" type="text" class="form-control" required />
+                        <span asp-validation-for="SpouceName" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </fieldset>
+    @* ./Family Information *@
+    
+    @* Present Address *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">বর্তমান ঠিকানা (Present Address)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PresentHoldingNoOrVillage" class="control-label col-xs-4 vertical-middle">
+                        Holding No Or Village
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PresentHoldingNoOrVillage" placeholder="Present Holding No Or Village" type="text" class="form-control" required />
+                        <span asp-validation-for="PresentHoldingNoOrVillage" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PresentRoadBlockSector" class="control-label col-xs-4 vertical-middle">
+                        Road Block Sector
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PresentRoadBlockSector" placeholder="Present Road Block Sector" type="text" class="form-control" required />
+                        <span asp-validation-for="PresentRoadBlockSector" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PresentThana" class="control-label col-xs-4 vertical-middle">
+                        Thana
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PresentThana" placeholder="Present Thana" type="text" class="form-control" required />
+                        <span asp-validation-for="PresentThana" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PresentPostOffice" class="control-label col-xs-4 vertical-middle">
+                        Post Office
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PresentPostOffice" placeholder="Present Post Office" type="text" class="form-control" required />
+                        <span asp-validation-for="PresentPostOffice" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PresentDistrict" class="control-label col-xs-4 vertical-middle">
+                        District
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PresentDistrict" placeholder="District" type="text" class="form-control" required />
+                        <span asp-validation-for="PresentDistrict" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    @* ./Present Address *@
+
+    @* Permanent Address *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">স্থায়ী ঠিকানা (Permanent Address)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PermanentHoldingNoOrVillage" class="control-label col-xs-4 vertical-middle">
+                        Holding No Or Village
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PermanentHoldingNoOrVillage" placeholder="Present Holding No Or Village" type="text" class="form-control" required />
+                        <span asp-validation-for="PermanentHoldingNoOrVillage" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PermanentRoadBlockSector" class="control-label col-xs-4 vertical-middle">
+                        Road Block Sector
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PermanentRoadBlockSector" placeholder="Present Road Block Sector" type="text" class="form-control" required />
+                        <span asp-validation-for="PermanentRoadBlockSector" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PermanentThana" class="control-label col-xs-4 vertical-middle">
+                        Thana
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PermanentThana" placeholder="Present Thana" type="text" class="form-control" required />
+                        <span asp-validation-for="PermanentThana" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PermanentPostOffice" class="control-label col-xs-4 vertical-middle">
+                        Post Office
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PermanentPostOffice" placeholder="Present Post Office" type="text" class="form-control" required />
+                        <span asp-validation-for="PermanentPostOffice" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PermanentDistrict" class="control-label col-xs-4 vertical-middle">
+                        District
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PermanentDistrict" placeholder="District" type="text" class="form-control" required />
+                        <span asp-validation-for="PermanentDistrict" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    @* ./Present Address *@
+
+    @* Organization Contact *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">সাধারন তথ্য (Common Information)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="HasContactWithAnyOrganization" class="control-label col-xs-4 vertical-middle">
+                        কোন বিশ্ববিদ্যালয়ে অথবা কোনও প্রতিস্থানে কোন নিদ্রিস্ত সময়ের জন্য চাকুরি করার কোন বাঢবাধকতা আছে কি না (Has Contact With Any Organization)
+                    </label>
+                    <div class="col-xs-8">
+                        <select asp-for="HasContactWithAnyOrganization" class="form-control" required>
+                            <option value=0>Yes</option>
+                            <option value=1>No</option>
+                            <option value=2>No Comment</option>
+                        </select>
+                        <span asp-validation-for="HasContactWithAnyOrganization" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="OrganizationContactDescription" class="control-label col-xs-4 vertical-middle">
+                        থাকলে তার বিবরন
+                    </label>
+                    <div class="col-xs-8">
+                        <textarea asp-for="OrganizationContactDescription" placeholder="Organization Contact Description (If Yes)" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="OrganizationContactDescription" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    @* ./University Forms Information  *@
+
+    @* Volunteer Experience *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">কোন আবাসিক বিশ্ববিদ্যালয়ে ও ছাত্রদের যৌথ গঠনমূলক কার্যকলাপ পরিচালনার অভিজ্ঞতা (Volunteer Experience)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="VolunteerExperience" class="control-label col-xs-4 vertical-middle">
+                        গঠনমূলক কার্যকলাপ পরিচালনার অভিজ্ঞতা
+                    </label>
+                    <div class="col-xs-8">
+                        <textarea asp-for="VolunteerExperience" placeholder="Volunteer Experience" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="VolunteerExperience" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    @* ./Volunteer Experience *@
+
+    @* Is Ever Suspended *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">নাম (Name)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="IsEverSuspended" class="control-label col-xs-4 vertical-middle">
+                        Is Ever Suspended
+                    </label>
+                    <div class="col-xs-8">
+                        <select asp-for="IsEverSuspended" class="form-control">
+                            <option value=0>Yes</option>
+                            <option value=1>No</option>
+                            <option value=2>No Comment</option>
+                        </select>
+                        <span asp-validation-for="IsEverSuspended" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="SuspensionReason" class="control-label col-xs-4 vertical-middle">
+                        Suspension Reason
+                    </label>
+                    <div class="col-xs-8">
+                        <textarea asp-for="SuspensionReason" placeholder="Suspension Reason" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="SuspensionReason" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    @* ./Is Ever Suspended *@
+
+    @* Is Getting Pension *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">নাম (Name)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="IsGettingPension" class="control-label col-xs-4 vertical-middle">
+                        Is Getting Pension
+                    </label>
+                    <div class="col-xs-8">
+                        <select asp-for="IsGettingPension" class="form-control">
+                            <option value=0>Yes</option>
+                            <option value=1>No</option>
+                            <option value=2>No Comment</option>
+                        </select>
+                        <span asp-validation-for="IsGettingPension" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PensionAmount" class="control-label col-xs-4 vertical-middle">
+                        Pension Amount
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="PensionAmount" placeholder="Pension Amount" type="number" min="100000" max="999999999999" class="form-control" />
+                        <span asp-validation-for="PensionAmount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PensionOrganizationName" class="control-label col-xs-4 vertical-middle">
+                        From What Organization You Are Getting Pension
+                    </label>
+                    <div class="col-xs-8">
+                        <textarea asp-for="PensionOrganizationName" placeholder="Pension Organization Name" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="PensionOrganizationName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    @* ./Is Getting Pension *@
+
+    @* Is Involved With AnyAssociation *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">নাম (Name)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="IsInvolvedWithAnyAssociation" class="control-label col-xs-4 vertical-middle">
+                        Do you Involved With Any Association
+                    </label>
+                    <div class="col-xs-8">
+                        <select asp-for="IsInvolvedWithAnyAssociation" class="form-control">
+                            <option value=0>Yes</option>
+                            <option value=1>No</option>
+                        </select>
+                        <span asp-validation-for="IsInvolvedWithAnyAssociation" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NameOfAssociation" class="control-label col-xs-4 vertical-middle">
+                        Name Of The Association If You Are Involved
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="NameOfAssociation" placeholder="Name Of The Association If You Are Involved" type="text" class="form-control" required />
+                        <span asp-validation-for="NameOfAssociation" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DescriptionOfAssociation" class="control-label col-xs-4 vertical-middle">
+                        From What Organization You Are Getting Pension
+                    </label>
+                    <div class="col-xs-8">
+                        <textarea asp-for="DescriptionOfAssociation" placeholder="Description Of Association" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="DescriptionOfAssociation" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    @* ./Is Involved With AnyAssociation *@
+
+    @* Payment Information *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">নাম (Name)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="BankDraftOrPayOrderNo" class="control-label col-xs-4 vertical-middle">
+                        Bank Draft Or PayOrder No
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="BankDraftOrPayOrderNo" placeholder="Bank Draft Or PayOrder No" type="text" class="form-control" required />
+                        <span asp-validation-for="BankDraftOrPayOrderNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DateOfDraftOrOrder" class="control-label col-xs-4 vertical-middle">
+                        Date Of Bank Draft / Pay Order
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="DateOfDraftOrOrder" placeholder="Date Of Bank Draft / Pay Order" type="text" class="form-control DatePicker" required />
+                        <span asp-validation-for="DateOfDraftOrOrder" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="AmountOfMoney" class="control-label col-xs-4 vertical-middle">
+                        Amount Of Bank Draft / Pay Order Money
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="AmountOfMoney" type="number" min="100" max="99999999999999999" placeholder="Bank Draft Or PayOrder No" class="form-control" required />
+                        <span asp-validation-for="AmountOfMoney" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NameOfBank" class="control-label col-xs-4 vertical-middle">
+                        Bank Name Where You Have Paid Draft / Pay Order
+                    </label>
+                    <div class="col-xs-8">
+                        <input asp-for="NameOfBank" placeholder="Bank Name Where You Have Paid Draft / Pay Order" type="text" class="form-control" required />
+                        <span asp-validation-for="NameOfBank" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="BranchOfBank" class="control-label col-xs-4 vertical-middle">
+                        Branch Of Bank Where You Have Paid Draft / Pay Order
+                    </label>
+                    <div class="col-xs-8">
+                        <textarea asp-for="BranchOfBank" placeholder="Branch Of Bank Where You Have Paid Draft / Pay Order" class="form-control" rows="5" required></textarea>
+                        <span asp-validation-for="BranchOfBank" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    @* ./Payment Information *@
+
+    @* Extra Information *@
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">নাম (Name)</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ExtraInformation" class="control-label col-xs-4 vertical-middle">
+                        Extra Information
+                    </label>
+                    <div class="col-xs-8">
+                        <textarea asp-for="ExtraInformation" placeholder="Extra Information" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="ExtraInformation" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    @* ./Extra Information *@
 
     <div class="form-group">
         <div class="col-xs-offset-4 col-xs-4">

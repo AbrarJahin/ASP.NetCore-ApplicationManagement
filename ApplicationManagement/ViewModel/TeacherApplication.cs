@@ -19,6 +19,12 @@ namespace ApplicationManagement.ViewModel
         [Display(Name = "Nick Name")]
         public string NickName { get; set; }
 
+        [Required, MinLength(9), MaxLength(16)]
+        [Phone]
+        public string PhoneNumber { get; set; }
+        [Required, MinLength(4), MaxLength(50)]
+        public string Email { get; set; }
+
         [Required, MinLength(3), MaxLength(60)]
         [Display(Name = "Father Name")]
         public string FatherName { get; set; }  //No 2 in form
@@ -28,6 +34,30 @@ namespace ApplicationManagement.ViewModel
         [MinLength(3), MaxLength(60)]
         [Display(Name = "Mother Name")]
         public string MotherName { get; set; }  //No 4 in form
+
+        //Present Address
+        [Required]
+        public string PresentHoldingNoOrVillage { get; set; }
+        [Required]
+        public string PresentRoadBlockSector { get; set; }
+        [Required]
+        public string PresentThana { get; set; }
+        [Required]
+        public string PresentPostOffice { get; set; }
+        [Required]
+        public string PresentDistrict { get; set; }
+
+        //Permanent Address
+        [Required]
+        public string PermanentHoldingNoOrVillage { get; set; }
+        [Required]
+        public string PermanentRoadBlockSector { get; set; }
+        [Required]
+        public string PermanentThana { get; set; }
+        [Required]
+        public string PermanentPostOffice { get; set; }
+        [Required]
+        public string PermanentDistrict { get; set; }
 
         //No 5 in form
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
