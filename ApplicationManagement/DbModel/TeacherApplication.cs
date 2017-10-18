@@ -134,9 +134,11 @@ namespace ApplicationManagement.DbModel
         {
             AddedDate = DateTime.UtcNow;
             LastModifiedDate = DateTime.UtcNow;
-
-            AgeAtLastDateOfSubmission =  DateTime.UtcNow - DateOfBirth;
+            //AgeAtLastDateOfSubmission =  DateTime.UtcNow - DateOfBirth;
             IsPaymentDone = PaymentStatus.Pending;
+            IsApplicationFinalised = false;
+            IsPaperApplicationReceived = Decision.No;
+            IsSelectedForExam = SelectionStatus.Pending;
         }
     }
 }
