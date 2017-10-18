@@ -9,7 +9,7 @@
 <form asp-controller="Home" asp-action="ContactPost" method="post" class="form-horizontal">
     @* Name *@
     <fieldset class="fieldset-bordered">
-        <legend class="legend-bordered">নাম (Name)</legend>
+        <legend class="legend-bordered">প্রার্থীর পূর্ণ নাম (Name Of Participant)</legend>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -88,16 +88,16 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Religion" class="control-label col-xs-4 vertical-middle">
-                        ধর্ম
+                        ধর্ম (Religion)
                     </label>
                     <div class="col-xs-8">
                         <select asp-for="Religion" class="form-control">
-                            <option value=0>Islam</option>
-                            <option value=1>Hinduism</option>
-                            <option value=2>Buddhists</option>
-                            <option value=3>Christians</option>
-                            <option value=4>Animists</option>
-                            <option value=5>Atheist</option>
+                            <option value=0>ইসলাম (Islam)</option>
+                            <option value=1>হিন্দু (Hinduism)</option>
+                            <option value=2>বৌদ্ধ (Buddhists)</option>
+                            <option value=3>খ্রিস্টান (Christians)</option>
+                            <option value=4>আধ্যাত্ববাদ (Animists)</option>
+                            <option value=5>নাস্তিক (Atheist)</option>
                         </select>
                         <span asp-validation-for="Religion" class="text-danger"></span>
                     </div>
@@ -114,8 +114,8 @@
                             <br /> <input type="radio" asp-for="MaritalStatus" value=1 class="radio-inline">Married
                         *@
                         <select asp-for="MaritalStatus" class="form-control">
-                            <option value=0>Unmarried</option>
-                            <option value=1>Married</option>
+                            <option value=0>অবিবাহিত (Unmarried)</option>
+                            <option value=1>বিবাহিত (Married)</option>
                         </select>
                         <span asp-validation-for="MaritalStatus" class="text-danger"></span>
                     </div>
@@ -173,10 +173,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PresentHoldingNoOrVillage" class="control-label col-xs-4 vertical-middle">
-                        Holding No Or Village
+                        হোল্ডিং নং / গ্রাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PresentHoldingNoOrVillage" placeholder="Present Holding No Or Village" type="text" class="form-control" required />
+                        <input asp-for="PresentHoldingNoOrVillage" placeholder="Holding No Or Village" type="text" class="form-control" required />
                         <span asp-validation-for="PresentHoldingNoOrVillage" class="text-danger"></span>
                     </div>
                 </div>
@@ -184,10 +184,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PresentRoadBlockSector" class="control-label col-xs-4 vertical-middle">
-                        Road Block Sector
+                        রোড/ব্লক/সেক্টর
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PresentRoadBlockSector" placeholder="Present Road Block Sector" type="text" class="form-control" required />
+                        <input asp-for="PresentRoadBlockSector" placeholder="Road/Block/Sector" type="text" class="form-control" required />
                         <span asp-validation-for="PresentRoadBlockSector" class="text-danger"></span>
                     </div>
                 </div>
@@ -195,10 +195,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PresentThana" class="control-label col-xs-4 vertical-middle">
-                        Thana
+                        থানা
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PresentThana" placeholder="Present Thana" type="text" class="form-control" required />
+                        <input asp-for="PresentThana" placeholder="Thana" type="text" class="form-control" required />
                         <span asp-validation-for="PresentThana" class="text-danger"></span>
                     </div>
                 </div>
@@ -206,10 +206,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PresentPostOffice" class="control-label col-xs-4 vertical-middle">
-                        Post Office
+                        পোস্ট অফিস
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PresentPostOffice" placeholder="Present Post Office" type="text" class="form-control" required />
+                        <input asp-for="PresentPostOffice" placeholder="Post Office" type="text" class="form-control" required />
                         <span asp-validation-for="PresentPostOffice" class="text-danger"></span>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PresentDistrict" class="control-label col-xs-4 vertical-middle">
-                        District
+                        জেলা
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="PresentDistrict" placeholder="District" type="text" class="form-control" required />
@@ -236,10 +236,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PermanentHoldingNoOrVillage" class="control-label col-xs-4 vertical-middle">
-                        Holding No Or Village
+                        হোল্ডিং নং / গ্রাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PermanentHoldingNoOrVillage" placeholder="Present Holding No Or Village" type="text" class="form-control" required />
+                        <input asp-for="PermanentHoldingNoOrVillage" placeholder="Holding No Or Village" type="text" class="form-control" required />
                         <span asp-validation-for="PermanentHoldingNoOrVillage" class="text-danger"></span>
                     </div>
                 </div>
@@ -247,10 +247,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PermanentRoadBlockSector" class="control-label col-xs-4 vertical-middle">
-                        Road Block Sector
+                        রোড/ব্লক/সেক্টর
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PermanentRoadBlockSector" placeholder="Present Road Block Sector" type="text" class="form-control" required />
+                        <input asp-for="PermanentRoadBlockSector" placeholder="Road Block Sector" type="text" class="form-control" required />
                         <span asp-validation-for="PermanentRoadBlockSector" class="text-danger"></span>
                     </div>
                 </div>
@@ -258,10 +258,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PermanentThana" class="control-label col-xs-4 vertical-middle">
-                        Thana
+                        থানা
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PermanentThana" placeholder="Present Thana" type="text" class="form-control" required />
+                        <input asp-for="PermanentThana" placeholder="Thana" type="text" class="form-control" required />
                         <span asp-validation-for="PermanentThana" class="text-danger"></span>
                     </div>
                 </div>
@@ -269,10 +269,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PermanentPostOffice" class="control-label col-xs-4 vertical-middle">
-                        Post Office
+                        পোস্ট অফিস
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PermanentPostOffice" placeholder="Present Post Office" type="text" class="form-control" required />
+                        <input asp-for="PermanentPostOffice" placeholder="Post Office" type="text" class="form-control" required />
                         <span asp-validation-for="PermanentPostOffice" class="text-danger"></span>
                     </div>
                 </div>
@@ -280,7 +280,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PermanentDistrict" class="control-label col-xs-4 vertical-middle">
-                        District
+                        জেলা
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="PermanentDistrict" placeholder="District" type="text" class="form-control" required />
@@ -299,13 +299,12 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="HasContactWithAnyOrganization" class="control-label col-xs-4 vertical-middle">
-                        কোন বিশ্ববিদ্যালয়ে অথবা কোনও প্রতিস্থানে কোন নিদ্রিস্ত সময়ের জন্য চাকুরি করার কোন বাঢবাধকতা আছে কি না (Has Contact With Any Organization)
+                        কোন বিশ্ববিদ্যালয়ে অথবা কোনও প্রতিস্থানে কোন নির্দিষ্ট সময়ের জন্য চাকুরি করার কোন চুক্তি আছে কি না (Has Contact With Any Organization)
                     </label>
                     <div class="col-xs-8">
                         <select asp-for="HasContactWithAnyOrganization" class="form-control" required>
-                            <option value=0>Yes</option>
-                            <option value=1>No</option>
-                            <option value=2>No Comment</option>
+                            <option value=0>হ্যাঁ (Yes)</option>
+                            <option value=1>না ()</option>
                         </select>
                         <span asp-validation-for="HasContactWithAnyOrganization" class="text-danger"></span>
                     </div>
@@ -333,7 +332,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="VolunteerExperience" class="control-label col-xs-4 vertical-middle">
-                        গঠনমূলক কার্যকলাপ পরিচালনার অভিজ্ঞতা
+                        গঠনমূলক কার্যকলাপ পরিচালনার অভিজ্ঞতার বিবরণ
                     </label>
                     <div class="col-xs-8">
                         <textarea asp-for="VolunteerExperience" placeholder="Volunteer Experience" class="form-control" rows="5"></textarea>
