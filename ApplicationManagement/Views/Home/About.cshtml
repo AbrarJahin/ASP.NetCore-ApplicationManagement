@@ -304,7 +304,7 @@
                     <div class="col-xs-8">
                         <select asp-for="HasContactWithAnyOrganization" class="form-control" required>
                             <option value=0>হ্যাঁ (Yes)</option>
-                            <option value=1>না ()</option>
+                            <option value=1>না (No)</option>
                         </select>
                         <span asp-validation-for="HasContactWithAnyOrganization" class="text-danger"></span>
                     </div>
@@ -346,18 +346,17 @@
 
     @* Is Ever Suspended *@
     <fieldset class="fieldset-bordered">
-        <legend class="legend-bordered">নাম (Name)</legend>
+        <legend class="legend-bordered">চাকুরী থেকে বরখাস্ত প্রসঙ্গ (Suspended)</legend>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="IsEverSuspended" class="control-label col-xs-4 vertical-middle">
-                        Is Ever Suspended
+                        কখনো চাকুরী থেকে বরখাস্ত হইয়াছেন কি না (Did You Ever Suspended From Any Job)
                     </label>
                     <div class="col-xs-8">
                         <select asp-for="IsEverSuspended" class="form-control">
-                            <option value=0>Yes</option>
-                            <option value=1>No</option>
-                            <option value=2>No Comment</option>
+                            <option value=0>হ্যাঁ (Yes)</option>
+                            <option value=1>না (No)</option>
                         </select>
                         <span asp-validation-for="IsEverSuspended" class="text-danger"></span>
                     </div>
@@ -366,7 +365,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="SuspensionReason" class="control-label col-xs-4 vertical-middle">
-                        Suspension Reason
+                        হয়ে থাকলে তার কারণ (Suspension Reason If Yes)
                     </label>
                     <div class="col-xs-8">
                         <textarea asp-for="SuspensionReason" placeholder="Suspension Reason" class="form-control" rows="5"></textarea>
@@ -380,18 +379,17 @@
 
     @* Is Getting Pension *@
     <fieldset class="fieldset-bordered">
-        <legend class="legend-bordered">নাম (Name)</legend>
+        <legend class="legend-bordered">পেনশন সংক্রান্ত (Pension Related Info)</legend>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="IsGettingPension" class="control-label col-xs-4 vertical-middle">
-                        Is Getting Pension
+                        কোথাও থেকে পেনশন প্রাপ্ত হোচ্ছেন কি (Is Getting Pension)
                     </label>
                     <div class="col-xs-8">
                         <select asp-for="IsGettingPension" class="form-control">
-                            <option value=0>Yes</option>
-                            <option value=1>No</option>
-                            <option value=2>No Comment</option>
+                            <option value=0>হ্যাঁ (Yes)</option>
+                            <option value=1>না (No)</option>
                         </select>
                         <span asp-validation-for="IsGettingPension" class="text-danger"></span>
                     </div>
@@ -400,7 +398,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PensionAmount" class="control-label col-xs-4 vertical-middle">
-                        Pension Amount
+                        পেনশনের পরিমান টাকায় (Pension Amount in Taka)
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="PensionAmount" placeholder="Pension Amount" type="number" min="100000" max="999999999999" class="form-control" />
@@ -411,7 +409,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="PensionOrganizationName" class="control-label col-xs-4 vertical-middle">
-                        From What Organization You Are Getting Pension
+                        যেই প্রথিষ্ঠান থেকে পেনশন পাচ্ছেন (From What Organization You Are Getting Pension)
                     </label>
                     <div class="col-xs-8">
                         <textarea asp-for="PensionOrganizationName" placeholder="Pension Organization Name" class="form-control" rows="5"></textarea>
@@ -425,17 +423,17 @@
 
     @* Is Involved With AnyAssociation *@
     <fieldset class="fieldset-bordered">
-        <legend class="legend-bordered">নাম (Name)</legend>
+        <legend class="legend-bordered">প্রতিষ্ঠান/সংস্থা/সমিতির সাথে জড়িত সংক্রান্ত (Involvement With Any Association)</legend>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="IsInvolvedWithAnyAssociation" class="control-label col-xs-4 vertical-middle">
-                        Do you Involved With Any Association
+                        কোনো প্রতিষ্ঠান/সংস্থা/সমিতির সাথে জড়িত কি না (Do you Involved With Any Association)
                     </label>
                     <div class="col-xs-8">
                         <select asp-for="IsInvolvedWithAnyAssociation" class="form-control">
-                            <option value=0>Yes</option>
-                            <option value=1>No</option>
+                            <option value=0>হ্যাঁ (Yes)</option>
+                            <option value=1>না (No)</option>
                         </select>
                         <span asp-validation-for="IsInvolvedWithAnyAssociation" class="text-danger"></span>
                     </div>
@@ -444,7 +442,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="NameOfAssociation" class="control-label col-xs-4 vertical-middle">
-                        Name Of The Association If You Are Involved
+                        জড়িত হলে সংস্থার নাম (Name Of The Association If Yes)
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="NameOfAssociation" placeholder="Name Of The Association If You Are Involved" type="text" class="form-control" required />
@@ -455,7 +453,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="DescriptionOfAssociation" class="control-label col-xs-4 vertical-middle">
-                        From What Organization You Are Getting Pension
+                        জড়িত হলে সংস্থার বিবরণ (Description of the Association If Yes)
                     </label>
                     <div class="col-xs-8">
                         <textarea asp-for="DescriptionOfAssociation" placeholder="Description Of Association" class="form-control" rows="5"></textarea>
@@ -469,12 +467,12 @@
 
     @* Payment Information *@
     <fieldset class="fieldset-bordered">
-        <legend class="legend-bordered">নাম (Name)</legend>
+        <legend class="legend-bordered">টাকা প্রদান (Payment)</legend>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="BankDraftOrPayOrderNo" class="control-label col-xs-4 vertical-middle">
-                        Bank Draft Or PayOrder No
+                        ব্যাংক ড্রাফট/পে অর্ডার নং
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="BankDraftOrPayOrderNo" placeholder="Bank Draft Or PayOrder No" type="text" class="form-control" required />
@@ -485,7 +483,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="DateOfDraftOrOrder" class="control-label col-xs-4 vertical-middle">
-                        Date Of Bank Draft / Pay Order
+                        ব্যাংকে টাকা জমা দেওয়ার তারিখ
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="DateOfDraftOrOrder" placeholder="Date Of Bank Draft / Pay Order" type="text" class="form-control DatePicker" required />
@@ -496,7 +494,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="AmountOfMoney" class="control-label col-xs-4 vertical-middle">
-                        Amount Of Bank Draft / Pay Order Money
+                        টাকার পরিমান
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="AmountOfMoney" type="number" min="100" max="99999999999999999" placeholder="Bank Draft Or PayOrder No" class="form-control" required />
@@ -507,7 +505,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="NameOfBank" class="control-label col-xs-4 vertical-middle">
-                        Bank Name Where You Have Paid Draft / Pay Order
+                        ব্যাংকের নাম
                     </label>
                     <div class="col-xs-8">
                         <input asp-for="NameOfBank" placeholder="Bank Name Where You Have Paid Draft / Pay Order" type="text" class="form-control" required />
@@ -518,7 +516,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="BranchOfBank" class="control-label col-xs-4 vertical-middle">
-                        Branch Of Bank Where You Have Paid Draft / Pay Order
+                        শাখা
                     </label>
                     <div class="col-xs-8">
                         <textarea asp-for="BranchOfBank" placeholder="Branch Of Bank Where You Have Paid Draft / Pay Order" class="form-control" rows="5" required></textarea>
@@ -532,12 +530,12 @@
 
     @* Extra Information *@
     <fieldset class="fieldset-bordered">
-        <legend class="legend-bordered">নাম (Name)</legend>
+        <legend class="legend-bordered">অতিরিক্ত তথ্য (Exra Info)</legend>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="ExtraInformation" class="control-label col-xs-4 vertical-middle">
-                        Extra Information
+                        অতিরিক্ত তথ্য
                     </label>
                     <div class="col-xs-8">
                         <textarea asp-for="ExtraInformation" placeholder="Extra Information" class="form-control" rows="5"></textarea>
