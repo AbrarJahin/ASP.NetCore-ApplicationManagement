@@ -445,7 +445,7 @@
                         জড়িত হলে সংস্থার নাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="NameOfAssociation" placeholder="Name Of The Association If You Are Involved" type="text" class="form-control" required />
+                        <input asp-for="NameOfAssociation" placeholder="Name Of The Association If You Are Involved" type="text" class="form-control" />
                         <span asp-validation-for="NameOfAssociation" class="text-danger"></span>
                     </div>
                 </div>
@@ -535,10 +535,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="ExtraInformation" class="control-label col-xs-4 vertical-middle">
-                        অতিরিক্ত তথ্য
+                        অতিরিক্ত তথ্য (যদি থাকে)
                     </label>
                     <div class="col-xs-8">
-                        <textarea asp-for="ExtraInformation" placeholder="Extra Information" class="form-control" rows="5"></textarea>
+                        <textarea asp-for="ExtraInformation" placeholder="Extra Information (If Any)" class="form-control" rows="5"></textarea>
                         <span asp-validation-for="ExtraInformation" class="text-danger"></span>
                     </div>
                 </div>

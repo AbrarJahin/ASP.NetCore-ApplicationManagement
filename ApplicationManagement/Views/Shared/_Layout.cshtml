@@ -13,19 +13,12 @@
     <meta name="keywords" content="University of Barisal,Barisal University,বরিশাল বিশ্ববিদ্যালয়">
     <meta name="author" content="S. M. Abrar Jahin">
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/lib/css/bootstrap-datepicker.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.min.css"
-              asp-fallback-href="~/lib/css/bootstrap-datepicker.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        @*Test code for Datepicker CSS CDN should be updated*@
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
@@ -65,38 +58,37 @@
         <hr />
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year.ToString() - বরিশাল বিশ্ববিদ্যালয়</p>
-            @pageName
+        <footer class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="list-group col-md-4">
+                        <a href="https://www.omicronlab.com/blog/tips-and-tricks/fix-bengali-display-problem-google-chrome/" target="_blank" class="list-group-item">Problem Seeing Bengali</a>
+                        <a href="https://www.omicronlab.com/avro-keyboard-download.html" target="_blank" class="list-group-item">Writing Bengali With Software</a>
+                        <a href="https://www.google.com/intl/bn/inputtools/try/" target="_blank" class="list-group-item">Writing Bengali With Online Tool</a>
+                    </div>
+                    <div class="list-group col-md-4">
+                        <a href="mailto:ajahin.bu@gmail.com?Subject=Job%20Portal%20Issue" target="_top" class="list-group-item"><span class="glyphicon glyphicon-envelope"/> Send Mail For Any Issue</a>
+                        <a href="tel:+8801822804636" target="_blank" class="list-group-item"><span class="glyphicon glyphicon-phone-alt" /> Call For Solution</a>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="muted pull-right">© @DateTime.Now.Year.ToString() - বরিশাল বিশ্ববিদ্যালয় - All rights reserved</p>
+                        <environment names="Development">
+                            Page Name => @pageName
+                        </environment>
+                    </div>
+                </div>
+            </div>
         </footer>
+        <!--/.Footer-->
     </div>
 
     <environment names="Development">
-        <script src="~/lib/js/jquery.min.js"></script>
-        <script src="~/lib/js/bootstrap.min.js"></script>
-        <script src="~/lib/js/bootstrap-datepicker.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery.datepicker"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txb">
-        </script>
-        @*Test code for Datepicker JS CDN should be updated*@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebMarkupMin.AspNetCore1;
 
 namespace ApplicationManagement
 {
@@ -46,6 +47,27 @@ namespace ApplicationManagement
             // Add framework services.
             services.AddMvc();
 
+            //HTML minifire service
+            //With This - using WebMarkupMin.AspNetCore1;
+            services.AddWebMarkupMin(
+                options =>
+                {
+                    options.AllowMinificationInDevelopmentEnvironment = false;
+                    options.AllowCompressionInDevelopmentEnvironment = false;
+                })
+                .AddHtmlMinification(
+                    options =>
+                    {
+                        options.MinificationSettings.RemoveRedundantAttributes = true;
+                        options.MinificationSettings.RemoveHttpProtocolFromAttributes = true;
+                        options.MinificationSettings.RemoveHttpsProtocolFromAttributes = true;
+
+                        options.MinificationSettings.RemoveEmptyAttributes = true;
+                        options.MinificationSettings.RemoveHtmlComments = true;
+                        options.MinificationSettings.RemoveOptionalEndTags = true;
+                    })
+                .AddHttpCompression();
+
             // Add Configuration Manager services.
             services.AddSingleton<IConfiguration>(Configuration);
         }
@@ -67,6 +89,10 @@ namespace ApplicationManagement
             }
 
             app.UseStaticFiles();
+
+            //HTML Minifire
+            //With This - using WebMarkupMin.AspNetCore1;
+            app.UseWebMarkupMin();
 
             app.UseMvc(routes =>
             {
