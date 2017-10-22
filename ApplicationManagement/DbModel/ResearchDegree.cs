@@ -24,8 +24,7 @@ namespace ApplicationManagement.DbModel
         [Required]
         public UInt16 YearOfPassing { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
         public DateTime AddedDate { get; set; }
 
         public ResearchDegree()

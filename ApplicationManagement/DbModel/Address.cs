@@ -9,19 +9,18 @@ namespace ApplicationManagement.DbModel
         [Key]
         public long Id { get; set; }
 
-        [Required]
+        [Required, MinLength(3), MaxLength(50)]
         public string HoldingNoOrVillage { get; set; }
-        [Required]
+        [Required, MinLength(3), MaxLength(50)]
         public string RoadBlockSector { get; set; }
-        [Required]
+        [Required, MinLength(3), MaxLength(50)]
         public string Thana { get; set; }
-        [Required]
+        [Required, MinLength(3), MaxLength(50)]
         public string PostOffice { get; set; }
-        [Required]
+        [Required, MinLength(3), MaxLength(50)]
         public string District { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
         public DateTime AddedDate { get; set; }
 
         public Address()

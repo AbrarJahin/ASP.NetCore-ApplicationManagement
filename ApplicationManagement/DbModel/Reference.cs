@@ -19,12 +19,10 @@ namespace ApplicationManagement.DbModel
         public string Identity { get; set; }
         [Required]
         public string Address { get; set; }
-        [Phone]
-        [Required]
+        [Required, Phone]
         public string Phone { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
         public DateTime AddedDate { get; set; }
 
         public Reference()

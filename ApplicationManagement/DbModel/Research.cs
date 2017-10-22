@@ -19,16 +19,13 @@ namespace ApplicationManagement.DbModel
         public string NameOfPublicationPaper { get; set; }
         [Required]
         public string NameOfPublicationInstitute { get; set; }
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
-        [Required]
+        [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfPublication { get; set; }
         [Required]
         public string EditionOfPublication { get; set; }
         public string Note { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
         public DateTime AddedDate { get; set; }
 
         public Research()

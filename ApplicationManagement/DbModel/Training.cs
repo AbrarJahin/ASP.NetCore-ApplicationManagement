@@ -13,9 +13,9 @@ namespace ApplicationManagement.DbModel
         [ForeignKey("TeacherId")]
         public virtual TeacherApplication Teacher { get; set; }
 
-        [Required]
+        [Required, MinLength(3), MaxLength(70)]
         public string Name { get; set; }
-        [Required]
+        [Required, MinLength(9), MaxLength(1000)]
         public string Description { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
@@ -24,8 +24,7 @@ namespace ApplicationManagement.DbModel
 
         public TimeSpan Duration { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
         public DateTime AddedDate { get; set; }
 
         public Training()
