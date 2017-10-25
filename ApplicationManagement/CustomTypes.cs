@@ -46,5 +46,13 @@
             No,
             NoComment
         }
+
+        public enum ApplicationTypes
+        {
+            Teacher = 0,
+            StudentAdmission,
+            Officer,
+            Other
+        }
     }
 }

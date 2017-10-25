@@ -28,6 +28,7 @@ namespace ApplicationManagement.DbModel
         [Required, Phone, MinLength(9), MaxLength(16)]
         public string PhoneNumber { get; set; }
         [Required, EmailAddress, MinLength(4), MaxLength(50)]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Check email address format!")]
         public string Email { get; set; }
 
         [Required, MinLength(3), MaxLength(50)]

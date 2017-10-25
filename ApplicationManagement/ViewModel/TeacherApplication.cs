@@ -9,11 +9,11 @@ namespace ApplicationManagement.ViewModel
         public long JobCircularId { get; set; }
 
         //No 1 in form
-        [Required(ErrorMessage = "আপনার নাম লিখুন"), MinLength(3, ErrorMessage = "নাম ৩ অক্ষরের বড় হতে হবে"), MaxLength(50, ErrorMessage = "নাম ৫০ অক্ষরের ছোট হতে হবে"), Display(Name = "Bengali Name")]
+        [Required(ErrorMessage = "আপনার বাংলা নাম লিখুন"), MinLength(3, ErrorMessage = "বাংলা নাম ৩ অক্ষরের বড় হতে হবে"), MaxLength(50, ErrorMessage = "বাংলা নাম ৫০ অক্ষরের ছোট হতে হবে"), Display(Name = "বাংলা নাম", Prompt = "Bengali Name")]
         public string BengaliName { get; set; }
-        [Required, MinLength(3), MaxLength(50), Display(Name = "English Name")]
+        [Required(ErrorMessage = "আপনার ইংরেজী নাম লিখুন"), MinLength(3, ErrorMessage = "ইংরেজী নাম ৩ অক্ষরের বড় হতে হবে"), MaxLength(50, ErrorMessage = "ইংরেজী নাম ৫০ অক্ষরের ছোট হতে হবে"), Display(Name = "ইংরেজী নাম", Prompt = "English Name")]
         public string EnglishName { get; set; }
-        [Required, MinLength(3), MaxLength(20), Display(Name = "Nick Name")]
+        [Required(ErrorMessage = "আপনার  ডাকনাম লিখুন"), MinLength(3, ErrorMessage = "ডাকনাম ৩ অক্ষরের বড় হতে হবে"), MaxLength(20, ErrorMessage = "ডাকনাম 2০ অক্ষরের ছোট হতে হবে"), Display(Name = "প্রার্থী যে নামে পরিচিত", Prompt = "Nickname")]
         public string NickName { get; set; }
 
         [Required, MinLength(9), MaxLength(16), Phone]

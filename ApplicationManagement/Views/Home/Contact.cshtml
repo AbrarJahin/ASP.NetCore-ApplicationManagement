@@ -1,10 +1,11 @@
 ﻿@model ApplicationManagement.ViewModel.TeacherApplication
 
 @{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "Contact";
 }
 
 <h3>@ViewData["Message"]</h3>
+
 
 <form asp-controller="Home" asp-action="ContactPost" method="post" class="form-horizontal">
     @* Name *@
@@ -17,7 +18,7 @@
                         বাংলা নাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="BengaliName" placeholder="Bengali Name" type="text" class="form-control" required />
+                        <input asp-for="BengaliName" placeholder="Bengali Name" type="text" class="form-control" />
                         <span asp-validation-for="BengaliName" class="text-danger"></span>
                     </div>
                 </div>
@@ -28,7 +29,7 @@
                         ইংরেজি নাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="EnglishName" placeholder="English Name" type="text" class="form-control" required />
+                        <input asp-for="EnglishName" placeholder="English Name" type="text" class="form-control" />
                         <span asp-validation-for="BengaliName" class="text-danger"></span>
                     </div>
                 </div>
@@ -39,7 +40,7 @@
                         প্রার্থী যে নামে পরিচিত
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="NickName" placeholder="Nick Name" type="text" class="form-control" required />
+                        <input asp-for="NickName" placeholder="Nick Name" type="text" class="form-control" />
                         <span asp-validation-for="NickName" class="text-danger"></span>
                     </div>
                 </div>
@@ -58,7 +59,7 @@
                         জন্ম তারিখ
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="DateOfBirth" placeholder="Date Of Birth" type="text" class="form-control DatePicker" required />
+                        <input asp-for="DateOfBirth" placeholder="Date Of Birth" type="text" class="form-control DatePicker" />
                         <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                     </div>
                 </div>
@@ -69,7 +70,7 @@
                         জাতীয়তা
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="Nationality" placeholder="Nationality" type="text" class="form-control" required />
+                        <input asp-for="Nationality" placeholder="Nationality" type="text" class="form-control" />
                         <span asp-validation-for="Nationality" class="text-danger"></span>
                     </div>
                 </div>
@@ -80,7 +81,7 @@
                         জাতীয় পরিচয় পত্র নং
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="NId" placeholder="National ID Card No" type="text" class="form-control" required />
+                        <input asp-for="NId" placeholder="National ID Card No" type="text" class="form-control" />
                         <span asp-validation-for="NId" class="text-danger"></span>
                     </div>
                 </div>
@@ -92,6 +93,7 @@
                     </label>
                     <div class="col-xs-8">
                         <select asp-for="Religion" class="form-control">
+                            <option value=-1>Please select Your Religion</option>
                             <option value=0>ইসলাম (Islam)</option>
                             <option value=1>হিন্দু (Hinduism)</option>
                             <option value=2>বৌদ্ধ (Buddhists)</option>
@@ -114,6 +116,7 @@
                             <br /> <input type="radio" asp-for="MaritalStatus" value=1 class="radio-inline">Married
                         *@
                         <select asp-for="MaritalStatus" class="form-control">
+                            <option value=-1>Please select Your Marital Status</option>
                             <option value=0>অবিবাহিত (Unmarried)</option>
                             <option value=1>বিবাহিত (Married)</option>
                         </select>
@@ -124,7 +127,7 @@
         </div>
     </fieldset>
     @* ./Personal Information *@
-    
+
     @* Family Information  *@
     <fieldset class="fieldset-bordered">
         <legend class="legend-bordered">পারিবারিক তথ্য (Family Information)</legend>
@@ -135,7 +138,7 @@
                         পিতার নাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="FatherName" placeholder="Father Name" type="text" class="form-control" required />
+                        <input asp-for="FatherName" placeholder="Father Name" type="text" class="form-control" />
                         <span asp-validation-for="FatherName" class="text-danger"></span>
                     </div>
                 </div>
@@ -146,7 +149,7 @@
                         মাতার নাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="MotherName" placeholder="Mother Name" type="text" class="form-control" required />
+                        <input asp-for="MotherName" placeholder="Mother Name" type="text" class="form-control" />
                         <span asp-validation-for="MotherName" class="text-danger"></span>
                     </div>
                 </div>
@@ -157,7 +160,7 @@
                         স্বামী / স্ত্রীর নাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="SpouceName" placeholder="Spouce Name" type="text" class="form-control" required />
+                        <input asp-for="SpouceName" placeholder="Spouce Name" type="text" class="form-control" />
                         <span asp-validation-for="SpouceName" class="text-danger"></span>
                     </div>
                 </div>
@@ -165,7 +168,7 @@
         </div>
     </fieldset>
     @* ./Family Information *@
-    
+
     @* Present Address *@
     <fieldset class="fieldset-bordered">
         <legend class="legend-bordered">বর্তমান ঠিকানা (Present Address)</legend>
@@ -176,7 +179,7 @@
                         হোল্ডিং নং / গ্রাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PresentHoldingNoOrVillage" placeholder="Holding No Or Village" type="text" class="form-control" required />
+                        <input asp-for="PresentHoldingNoOrVillage" placeholder="Holding No Or Village" type="text" class="form-control" />
                         <span asp-validation-for="PresentHoldingNoOrVillage" class="text-danger"></span>
                     </div>
                 </div>
@@ -187,7 +190,7 @@
                         রোড/ব্লক/সেক্টর
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PresentRoadBlockSector" placeholder="Road/Block/Sector" type="text" class="form-control" required />
+                        <input asp-for="PresentRoadBlockSector" placeholder="Road/Block/Sector" type="text" class="form-control" />
                         <span asp-validation-for="PresentRoadBlockSector" class="text-danger"></span>
                     </div>
                 </div>
@@ -198,7 +201,7 @@
                         থানা
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PresentThana" placeholder="Thana" type="text" class="form-control" required />
+                        <input asp-for="PresentThana" placeholder="Thana" type="text" class="form-control" />
                         <span asp-validation-for="PresentThana" class="text-danger"></span>
                     </div>
                 </div>
@@ -209,7 +212,7 @@
                         পোস্ট অফিস
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PresentPostOffice" placeholder="Post Office" type="text" class="form-control" required />
+                        <input asp-for="PresentPostOffice" placeholder="Post Office" type="text" class="form-control" />
                         <span asp-validation-for="PresentPostOffice" class="text-danger"></span>
                     </div>
                 </div>
@@ -220,7 +223,7 @@
                         জেলা
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PresentDistrict" placeholder="District" type="text" class="form-control" required />
+                        <input asp-for="PresentDistrict" placeholder="District" type="text" class="form-control" />
                         <span asp-validation-for="PresentDistrict" class="text-danger"></span>
                     </div>
                 </div>
@@ -239,7 +242,7 @@
                         হোল্ডিং নং / গ্রাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PermanentHoldingNoOrVillage" placeholder="Holding No Or Village" type="text" class="form-control" required />
+                        <input asp-for="PermanentHoldingNoOrVillage" placeholder="Holding No Or Village" type="text" class="form-control" />
                         <span asp-validation-for="PermanentHoldingNoOrVillage" class="text-danger"></span>
                     </div>
                 </div>
@@ -250,7 +253,7 @@
                         রোড/ব্লক/সেক্টর
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PermanentRoadBlockSector" placeholder="Road Block Sector" type="text" class="form-control" required />
+                        <input asp-for="PermanentRoadBlockSector" placeholder="Road Block Sector" type="text" class="form-control" />
                         <span asp-validation-for="PermanentRoadBlockSector" class="text-danger"></span>
                     </div>
                 </div>
@@ -261,7 +264,7 @@
                         থানা
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PermanentThana" placeholder="Thana" type="text" class="form-control" required />
+                        <input asp-for="PermanentThana" placeholder="Thana" type="text" class="form-control" />
                         <span asp-validation-for="PermanentThana" class="text-danger"></span>
                     </div>
                 </div>
@@ -272,7 +275,7 @@
                         পোস্ট অফিস
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PermanentPostOffice" placeholder="Post Office" type="text" class="form-control" required />
+                        <input asp-for="PermanentPostOffice" placeholder="Post Office" type="text" class="form-control" />
                         <span asp-validation-for="PermanentPostOffice" class="text-danger"></span>
                     </div>
                 </div>
@@ -283,7 +286,7 @@
                         জেলা
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="PermanentDistrict" placeholder="District" type="text" class="form-control" required />
+                        <input asp-for="PermanentDistrict" placeholder="District" type="text" class="form-control" />
                         <span asp-validation-for="PermanentDistrict" class="text-danger"></span>
                     </div>
                 </div>
@@ -302,7 +305,8 @@
                         কোন বিশ্ববিদ্যালয়ে অথবা কোনও প্রতিস্থানে কোন নির্দিষ্ট সময়ের জন্য চাকুরি করার কোন চুক্তি আছে কি না (Has Contact With Any Organization)
                     </label>
                     <div class="col-xs-8">
-                        <select asp-for="HasContactWithAnyOrganization" class="form-control" required>
+                        <select asp-for="HasContactWithAnyOrganization" class="form-control">
+                            <option value=-1>Please select Your Contact Status</option>
                             <option value=0>হ্যাঁ (Yes)</option>
                             <option value=1>না (No)</option>
                         </select>
@@ -355,6 +359,7 @@
                     </label>
                     <div class="col-xs-8">
                         <select asp-for="IsEverSuspended" class="form-control">
+                            <option value=-1>Please select Your Suspention Status</option>
                             <option value=0>হ্যাঁ (Yes)</option>
                             <option value=1>না (No)</option>
                         </select>
@@ -388,6 +393,7 @@
                     </label>
                     <div class="col-xs-8">
                         <select asp-for="IsGettingPension" class="form-control">
+                            <option value=-1>Please select Your Pension Status</option>
                             <option value=0>হ্যাঁ (Yes)</option>
                             <option value=1>না (No)</option>
                         </select>
@@ -432,6 +438,7 @@
                     </label>
                     <div class="col-xs-8">
                         <select asp-for="IsInvolvedWithAnyAssociation" class="form-control">
+                            <option value=-1>Please select Your Association Involvment Status</option>
                             <option value=0>হ্যাঁ (Yes)</option>
                             <option value=1>না (No)</option>
                         </select>
@@ -475,7 +482,7 @@
                         ব্যাংক ড্রাফট/পে অর্ডার নং
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="BankDraftOrPayOrderNo" placeholder="Bank Draft Or PayOrder No" type="text" class="form-control" required />
+                        <input asp-for="BankDraftOrPayOrderNo" placeholder="Bank Draft Or PayOrder No" type="text" class="form-control" />
                         <span asp-validation-for="BankDraftOrPayOrderNo" class="text-danger"></span>
                     </div>
                 </div>
@@ -486,7 +493,7 @@
                         ব্যাংকে টাকা জমা দেওয়ার তারিখ
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="DateOfDraftOrOrder" placeholder="Date Of Bank Draft / Pay Order" type="text" class="form-control DatePicker" required />
+                        <input asp-for="DateOfDraftOrOrder" placeholder="Date Of Bank Draft / Pay Order" type="text" class="form-control DatePicker" />
                         <span asp-validation-for="DateOfDraftOrOrder" class="text-danger"></span>
                     </div>
                 </div>
@@ -497,7 +504,7 @@
                         টাকার পরিমান
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="AmountOfMoney" type="number" min="100" max="99999999999999999" placeholder="Bank Draft Or PayOrder No" class="form-control" required />
+                        <input asp-for="AmountOfMoney" type="number" min="100" max="99999999999999999" placeholder="Bank Draft Or PayOrder No" class="form-control" />
                         <span asp-validation-for="AmountOfMoney" class="text-danger"></span>
                     </div>
                 </div>
@@ -508,7 +515,7 @@
                         ব্যাংকের নাম
                     </label>
                     <div class="col-xs-8">
-                        <input asp-for="NameOfBank" placeholder="Bank Name Where You Have Paid Draft / Pay Order" type="text" class="form-control" required />
+                        <input asp-for="NameOfBank" placeholder="Bank Name Where You Have Paid Draft / Pay Order" type="text" class="form-control" />
                         <span asp-validation-for="NameOfBank" class="text-danger"></span>
                     </div>
                 </div>
@@ -519,7 +526,7 @@
                         ব্যাংকের শাখা
                     </label>
                     <div class="col-xs-8">
-                        <textarea asp-for="BranchOfBank" placeholder="Branch Of Bank Where You Have Paid Draft / Pay Order" class="form-control" rows="5" required></textarea>
+                        <textarea asp-for="BranchOfBank" placeholder="Branch Of Bank Where You Have Paid Draft / Pay Order" class="form-control" rows="5"></textarea>
                         <span asp-validation-for="BranchOfBank" class="text-danger"></span>
                     </div>
                 </div>
