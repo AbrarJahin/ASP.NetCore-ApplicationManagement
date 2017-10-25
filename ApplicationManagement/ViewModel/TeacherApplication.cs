@@ -9,7 +9,7 @@ namespace ApplicationManagement.ViewModel
         public long JobCircularId { get; set; }
 
         //No 1 in form
-        [Required, MinLength(3), MaxLength(50), Display(Name = "Bengali Name")]
+        [Required(ErrorMessage = "আপনার নাম লিখুন"), MinLength(3, ErrorMessage = "নাম ৩ অক্ষরের বড় হতে হবে"), MaxLength(50, ErrorMessage = "নাম ৫০ অক্ষরের ছোট হতে হবে"), Display(Name = "Bengali Name")]
         public string BengaliName { get; set; }
         [Required, MinLength(3), MaxLength(50), Display(Name = "English Name")]
         public string EnglishName { get; set; }
@@ -53,7 +53,7 @@ namespace ApplicationManagement.ViewModel
         public string PermanentDistrict { get; set; }
 
         //No 5 in form
-        [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true), Display(Name = "Date Of Birth")]
+        [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true), Display(Name = "Date Of Birth")]
         public DateTime DateOfBirth { get; set; }
 
         [Required, MinLength(3), MaxLength(20)]
@@ -96,18 +96,18 @@ namespace ApplicationManagement.ViewModel
         public string DescriptionOfAssociation { get; set; }
 
         //No 25 in form
-        [MinLength(5), MaxLength(50), Display(Name = "Bank Draft Or Pay Order No")]
+        [Required(ErrorMessage = "ব্যাংক ড্রাফট/পে-অর্ডার নং প্রয়োজন"), MinLength(5), MaxLength(50), Display(Name = "Bank Draft Or Pay Order No")]
         public string BankDraftOrPayOrderNo { get; set; }
-        [Required,DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true), Display(Name = "Date Of Draft Or Order")]
+        [Required(ErrorMessage = "ব্যাংক ড্রাফট/পে-অর্ডার জমা দেওয়ার দিন প্রয়োজন"), DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true), Display(Name = "Date Of Draft Or Order")]
         public DateTime DateOfDraftOrOrder { get; set; }
-        [Required, Display(Name = "Amount Of Money")]
+        [Required(ErrorMessage = "জমা কৃত টাকার পরিমান প্রয়োজন"), Display(Name = "Amount Of Money")]
         public UInt16 AmountOfMoney { get; set; }
-        [Required, MinLength(3), MaxLength(50), Display(Name = "Name Of Bank")]
+        [Required(ErrorMessage = "ব্যাংকের নাম প্রয়োজন"), MinLength(3), MaxLength(50), Display(Name = "Name Of Bank")]
         public string NameOfBank { get; set; }
-        [Required, MinLength(3), MaxLength(50), Display(Name = "Branch Of Bank")]
+        [Required(ErrorMessage = "ব্যাংকের ব্রাঞ্চের নাম প্রয়োজন"), MinLength(3), MaxLength(50), Display(Name = "Branch Of Bank")]
         public string BranchOfBank { get; set; }
 
-        [MinLength(9), MaxLength(1000), Display(Name = "Extra Information")]
+        [MinLength(9, ErrorMessage = "অতিরিক্ত তথ্য ৯ অক্ষরের বড় হতে হবে"), MaxLength(1000, ErrorMessage = "অতিরিক্ত তথ্য ১০০০ অক্ষরের ছোট হতে হবে"), Display(Name = "Extra Information")]
         public string ExtraInformation { get; set; }
     }
 }

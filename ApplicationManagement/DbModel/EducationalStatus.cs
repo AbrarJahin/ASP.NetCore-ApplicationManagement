@@ -22,7 +22,7 @@ namespace ApplicationManagement.DbModel
         public string CertificatePdfFileUrl { get; set; }
         public string TranscriptPdfFileUrl { get; set; }
 
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
         public DateTime AddedDate { get; set; }
 
         public EducationResult()

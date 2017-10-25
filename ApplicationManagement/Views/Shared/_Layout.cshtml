@@ -43,10 +43,10 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="@(pageName == "Home.Index" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="@(pageName == "Home.About" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li class="@(pageName == "JobCircular.Index" ? "active" : "")"><a asp-area="" asp-controller="JobCircular" asp-action="Index">Job Circulers</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="@(pageName == "JobCircular.Index" ? "active" : "")"><a asp-area="" asp-controller="JobCircular" asp-action="Index">Job Circulers</a></li>
+                    <li class="@(pageName == "Home.About" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li class="@(pageName == "Home.Contact" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
             </div>
@@ -73,7 +73,7 @@
                     <div class="col-md-4">
                         <p class="muted pull-right">© @DateTime.Now.Year.ToString() - বরিশাল বিশ্ববিদ্যালয় - All rights reserved</p>
                         <environment names="Development">
-                            Page Name => @pageName
+                            PageName=>@pageName
                         </environment>
                     </div>
                 </div>

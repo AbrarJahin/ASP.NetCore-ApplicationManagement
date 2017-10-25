@@ -18,8 +18,9 @@ namespace ApplicationManagement.Controllers
             {
                 context.JobCirculars.Add(new JobCircular
                 {
-                    Name = "Try Application",
-                    Detail = "Anything",
+                    NoticeImageFileUrl = "ডেমো ডাটা ডেমো ডাটা ডেমো ডাটা",
+                    PostName = "ডেমো ডাটা",
+                    Description = "ডেমো ডাটা",
                     StartDate = DateTime.UtcNow,
                     EndDate = DateTime.UtcNow
                 });
@@ -167,6 +168,7 @@ namespace ApplicationManagement.Controllers
 
                 context.TeacherApplications.Add(new DbModel.TeacherApplication
                 {
+                    ProfileImageFileUrl = "as das das d wer sdf sdf sdf dfg",
                     JobCircular = jobCircular,
                     BengaliName = "আবরার",
                     EnglishName = "Abrar",

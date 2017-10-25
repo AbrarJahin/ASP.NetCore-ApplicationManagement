@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ApplicationManagement.DbModel;
 
@@ -53,7 +50,7 @@ namespace ApplicationManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Detail,StartDate,EndDate,AddedDate,LastModifiedDate")] JobCircular jobCircular)
+        public async Task<IActionResult> Create([Bind("PostName,Description,StartDate,EndDate,NoticeImageFileUrl,NoOfTotalAvailablePosts")] JobCircular jobCircular)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +82,7 @@ namespace ApplicationManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Name,Detail,StartDate,EndDate,AddedDate,LastModifiedDate")] JobCircular jobCircular)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,PostName,Description,StartDate,EndDate,NoticeImageFileUrl,NoOfTotalAvailablePosts")] JobCircular jobCircular)
         {
             if (id != jobCircular.Id)
             {

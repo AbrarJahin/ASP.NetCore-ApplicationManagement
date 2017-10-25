@@ -38,9 +38,9 @@ namespace ApplicationManagement.DbModel
         public string MotherName { get; set; }  //No 4 in form
 
         //No 5 in form
-        [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public TimeSpan AgeAtLastDateOfSubmission { get; set; }
 
         //No 6 in form
@@ -107,7 +107,7 @@ namespace ApplicationManagement.DbModel
         public PaymentStatus IsPaymentDone { get; set; }
         [Required, MinLength(5), MaxLength(50)]
         public string BankDraftOrPayOrderNo { get; set; }
-        [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfDraftOrOrder { get; set; }
         [Required]
         public UInt16 AmountOfMoney { get; set; }
@@ -122,10 +122,10 @@ namespace ApplicationManagement.DbModel
         public Decision IsPaperApplicationReceived { get; set; }
         public SelectionStatus IsSelectedForExam { get; set; }
 
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
         public DateTime AddedDate { get; set; }
 
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
         public DateTime LastModifiedDate { get; set; }
 
         public TeacherApplication()

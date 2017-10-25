@@ -1,4 +1,4 @@
-@model ApplicationManagement.DbModel.JobCircular
+﻿@model ApplicationManagement.DbModel.JobCircular
 
 @{
     ViewData["Title"] = "Edit";
@@ -11,52 +11,52 @@
         <h4>JobCircular</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Id" />
         <div class="form-group">
-            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <label asp-for="PostName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <input asp-for="PostName" placeholder="Name of the Post" class="form-control" />
+                <span asp-validation-for="PostName" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Detail" class="col-md-2 control-label"></label>
+            <label asp-for="Description" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Detail" class="form-control" />
-                <span asp-validation-for="Detail" class="text-danger"></span>
+                <textarea asp-for="Description" placeholder="Description of the Post" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NoOfTotalAvailablePosts" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NoOfTotalAvailablePosts" type="number" min="1" max="999" placeholder="No Of Total Available Posts" class="form-control" required />
+                <span asp-validation-for="NoOfTotalAvailablePosts" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NoticeImageFileUrl" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NoticeImageFileUrl" class="form-control" placeholder="Should upload file of notice in here (Not Done Yet)" />
+                <span asp-validation-for="NoticeImageFileUrl" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="StartDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="StartDate" class="form-control" />
+                <input asp-for="StartDate" placeholder="Start Date of Application" type="text" class="form-control DatePicker" required />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="EndDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="EndDate" class="form-control" />
+                <input asp-for="EndDate" placeholder="End Date of Application" type="text" class="form-control DatePicker" required />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="AddedDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="AddedDate" class="form-control" />
-                <span asp-validation-for="AddedDate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="LastModifiedDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="LastModifiedDate" class="form-control" />
-                <span asp-validation-for="LastModifiedDate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="হালনাগাদ করুন (Update)" class="btn btn-danger" />
             </div>
         </div>
     </div>

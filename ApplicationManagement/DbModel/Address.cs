@@ -20,7 +20,7 @@ namespace ApplicationManagement.DbModel
         [Required, MinLength(3), MaxLength(50)]
         public string District { get; set; }
 
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.S}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
         public DateTime AddedDate { get; set; }
 
         public Address()
