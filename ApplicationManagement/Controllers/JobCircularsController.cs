@@ -6,11 +6,11 @@ using ApplicationManagement.DbModel;
 
 namespace ApplicationManagement.Controllers
 {
-    public class JobCircularController : Controller
+    public class JobCircularsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public JobCircularController(ApplicationDbContext context)
+        public JobCircularsController(ApplicationDbContext context)
         {
             _context = context;    
         }

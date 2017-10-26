@@ -77,4 +77,6 @@ public class ApplicationDbContext : DbContext
             //((BaseEntity)entity.Entity).LastModifireIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
         }
     }
+
+    public DbSet<ApplicationManagement.DbModel.Office> Office { get; set; }
 }
