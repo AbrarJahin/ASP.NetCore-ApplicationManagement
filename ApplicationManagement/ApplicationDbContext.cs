@@ -1,10 +1,14 @@
 ﻿using ApplicationManagement.DbModel;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Threading;
 
 public class ApplicationDbContext : DbContext
 {
     //List all tables here
-
+    public DbSet<Advertisement> Advertisements { get; set; }
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Country> Countries { get; set; }
     public DbSet<EducationResult> EducationResults { get; set; }
@@ -24,27 +28,53 @@ public class ApplicationDbContext : DbContext
         optionsBuilder.UseSqlite("Filename=./applicationDB.db");
     }
 
-    /*
-    //Configure Composite Keys here
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public override int SaveChanges()
     {
- 
-        modelBuilder.Entity<Teacher>()
-            .Property(t => t.Id)
-            .ValueGeneratedOnAdd();
-        modelBuilder.Entity<Teacher>()
-            .HasKey(t => new { t.NId, t.JobCircular.Id });
-
-        modelBuilder.Entity<JobCircular>()
-            .Property(j => j.Id)
-            .ValueGeneratedOnAdd();
-        modelBuilder.Entity<JobCircular>()
-            .HasKey(j => new { j.Name, j.StartDate, j.EndDate });
- 
-        modelBuilder.Entity<Address>()
-            .HasOne<Teacher>()
-            .WithMany()
-            .HasForeignKey(e => e.TeacherId);
+        AddTimestamps();
+        return base.SaveChanges();
     }
-    */
+
+    public override int SaveChanges(bool acceptAllChangesOnSuccess)
+    {
+        AddTimestamps();
+        return base.SaveChanges(acceptAllChangesOnSuccess);
+    }
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+    {
+        AddTimestamps();
+        return base.SaveChangesAsync(cancellationToken);
+    }
+
+    public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
+    {
+        AddTimestamps();
+        return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+    }
+
+    private void AddTimestamps()
+    {
+        var entities = ChangeTracker.Entries().Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
+
+        /*
+        var currentUsername = !string.IsNullOrEmpty(System.Web.HttpContext.Current?.User?.Identity?.Id)
+            ? HttpContext.Current.User.Identity.Id
+            : -1;   //-1 for Anonimous
+        */
+        long currentUserId = -1;    //-1 for Anonimous
+
+        foreach (var entity in entities)
+        {
+            if (entity.State == EntityState.Added)
+            {
+                ((BaseEntity)entity.Entity).CreatedTime = DateTime.UtcNow;
+                ((BaseEntity)entity.Entity).CreatorUserId = currentUserId;
+                //((BaseEntity)entity.Entity).CreatorIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            }
+
+            ((BaseEntity)entity.Entity).LastModifiedTime = DateTime.UtcNow;
+            ((BaseEntity)entity.Entity).LastModifireUserId = currentUserId;
+            //((BaseEntity)entity.Entity).LastModifireIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+        }
+    }
 }
