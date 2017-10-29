@@ -1,13 +1,13 @@
-﻿@model IEnumerable<ApplicationManagement.DbModel.JobCircular>
+@model IEnumerable<ApplicationManagement.DbModel.JobCircular>
 
 @{
-    ViewData["Title"] = "চাকুরীর বিজ্ঞপ্তি";
+    ViewData["Title"] = "Index";
 }
 
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary" role="button">নতুন চাকরির বিজ্ঞপ্তি (Add New Job Circular)</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -16,19 +16,28 @@
                     @Html.DisplayNameFor(model => model.PostName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Description)
+                    @Html.DisplayNameFor(model => model.ApplicationFormat)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.NoticeImageFileUrl)
+                    @Html.DisplayNameFor(model => model.Description)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.NoOfTotalAvailablePosts)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.StartDate)
+                    @Html.DisplayNameFor(model => model.NoticeImageFileUrl)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastModifiedTime)
                 </th>
             <th></th>
         </tr>
@@ -40,19 +49,28 @@
                 @Html.DisplayFor(modelItem => item.PostName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.ApplicationFormat)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NoticeImageFileUrl)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NoOfTotalAvailablePosts)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
+                @Html.DisplayFor(modelItem => item.NoticeImageFileUrl)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastModifiedTime)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -5,11 +5,8 @@ using static ApplicationManagement.DbModel.CustomTypes;
 
 namespace ApplicationManagement.DbModel
 {
-    public class JobCircular
+    public class JobCircular : BaseEntity
     {
-        [Key]
-        public long Id { get; set; }
-
         [Required, MinLength(3), MaxLength(50), Display(Name = "পদের নাম", Prompt = "Name of the Post")]
         public string PostName { get; set; }
 
@@ -31,18 +28,6 @@ namespace ApplicationManagement.DbModel
         [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true), Display(Name = "আবেদন শুরুর দিন", Prompt = "Start Date of Application")]
         public DateTime StartDate { get; set; }
 
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true), Display(Name = "সংযুক্তকরণের সময়")]
-        public DateTime AddedDate { get; set; }
-
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true), Display(Name = "শেষ হালনাগাদের সময়")]
-        public DateTime LastModifiedDate { get; set; }
-
         public virtual ICollection<TeacherApplication> TeacherApplications { get; set; }
-
-        public JobCircular()
-        {
-            AddedDate = DateTime.UtcNow;
-            LastModifiedDate = DateTime.UtcNow;
-        }
     }
 }

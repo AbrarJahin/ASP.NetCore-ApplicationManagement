@@ -15,13 +15,13 @@ namespace ApplicationManagement.Controllers
             _context = context;    
         }
 
-        // GET: JobCircular
+        // GET: JobCirculars
         public async Task<IActionResult> Index()
         {
             return View(await _context.JobCirculars.ToListAsync());
         }
 
-        // GET: JobCircular/Details/5
+        // GET: JobCirculars/Details/5
         public async Task<IActionResult> Details(long? id)
         {
             if (id == null)
@@ -39,18 +39,18 @@ namespace ApplicationManagement.Controllers
             return View(jobCircular);
         }
 
-        // GET: JobCircular/Create
+        // GET: JobCirculars/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: JobCircular/Create
+        // POST: JobCirculars/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PostName,Description,StartDate,EndDate,NoticeImageFileUrl,NoOfTotalAvailablePosts")] JobCircular jobCircular)
+        public async Task<IActionResult> Create([Bind("PostName,ApplicationFormat,Description,NoOfTotalAvailablePosts,NoticeImageFileUrl,EndDate,StartDate,Id,CreatedTime,CreatorUserId,LastModifiedTime,LastModifireUserId")] JobCircular jobCircular)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace ApplicationManagement.Controllers
             return View(jobCircular);
         }
 
-        // GET: JobCircular/Edit/5
+        // GET: JobCirculars/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
@@ -77,12 +77,12 @@ namespace ApplicationManagement.Controllers
             return View(jobCircular);
         }
 
-        // POST: JobCircular/Edit/5
+        // POST: JobCirculars/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,PostName,Description,StartDate,EndDate,NoticeImageFileUrl,NoOfTotalAvailablePosts")] JobCircular jobCircular)
+        public async Task<IActionResult> Edit(long id, [Bind("PostName,ApplicationFormat,Description,NoOfTotalAvailablePosts,NoticeImageFileUrl,EndDate,StartDate,Id,CreatedTime,CreatorUserId,LastModifiedTime,LastModifireUserId")] JobCircular jobCircular)
         {
             if (id != jobCircular.Id)
             {
@@ -112,7 +112,7 @@ namespace ApplicationManagement.Controllers
             return View(jobCircular);
         }
 
-        // GET: JobCircular/Delete/5
+        // GET: JobCirculars/Delete/5
         public async Task<IActionResult> Delete(long? id)
         {
             if (id == null)
@@ -130,7 +130,7 @@ namespace ApplicationManagement.Controllers
             return View(jobCircular);
         }
 
-        // POST: JobCircular/Delete/5
+        // POST: JobCirculars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)

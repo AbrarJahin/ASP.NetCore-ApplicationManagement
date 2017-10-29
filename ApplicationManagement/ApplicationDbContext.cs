@@ -15,6 +15,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Experience> Experiences { get; set; }
     public DbSet<JobCircular> JobCirculars { get; set; }
     public DbSet<Language> Languages { get; set; }
+    public DbSet<Office> Offices { get; set; }
     public DbSet<Reference> References { get; set; }
     public DbSet<Research> Researches { get; set; }
     public DbSet<ResearchDegree> ResearchDegrees { get; set; }
@@ -71,12 +72,19 @@ public class ApplicationDbContext : DbContext
                 ((BaseEntity)entity.Entity).CreatorUserId = currentUserId;
                 //((BaseEntity)entity.Entity).CreatorIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
             }
+            else
+            {
+                ((BaseEntity)entity.Entity).CreatedTime = ((BaseEntity)entity.Entity).CreatedTime.GetValueOrDefault();
+                //((BaseEntity)entity.Entity).CreatedTime = ((BaseEntity)entity.Entity).Property("CreatedTime").OriginalValue;
+                //db.Entry((BaseEntity)entity.Entity).Property(x => x.CreatedTime).IsModified = true;
+                //((BaseEntity)entity.Entity).CreatedTime = ((BaseEntity)entity.Entity).Property("CreatedTime").OriginalValue;
+                ((BaseEntity)entity.Entity).CreatorUserId = ((BaseEntity)entity.Entity).CreatorUserId;
+                //((BaseEntity)entity.Entity).CreatorIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            }
 
             ((BaseEntity)entity.Entity).LastModifiedTime = DateTime.UtcNow;
             ((BaseEntity)entity.Entity).LastModifireUserId = currentUserId;
             //((BaseEntity)entity.Entity).LastModifireIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
         }
     }
-
-    public DbSet<ApplicationManagement.DbModel.Office> Office { get; set; }
 }

@@ -1,4 +1,4 @@
-﻿@model ApplicationManagement.DbModel.JobCircular
+@model ApplicationManagement.DbModel.JobCircular
 
 @{
     ViewData["Title"] = "Details";
@@ -17,22 +17,22 @@
             @Html.DisplayFor(model => model.PostName)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.ApplicationFormat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationFormat)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayNameFor(model => model.NoOfTotalAvailablePosts)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
+            @Html.DisplayFor(model => model.NoOfTotalAvailablePosts)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.NoticeImageFileUrl)
@@ -41,22 +41,44 @@
             @Html.DisplayFor(model => model.NoticeImageFileUrl)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.AddedDate)
+            @Html.DisplayNameFor(model => model.EndDate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.AddedDate)
+            @Html.DisplayFor(model => model.EndDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.LastModifiedDate)
+            @Html.DisplayNameFor(model => model.StartDate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.LastModifiedDate)
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatorUserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatorUserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModifiedTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastModifiedTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModifireUserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastModifireUserId)
         </dd>
     </dl>
 </div>
-
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a> |
-    <a asp-action="Index" class="btn btn-success" role="button">আবেদন করুন (Apply For The Post)</a>
+    <a asp-action="Index">Back to List</a>
 </div>

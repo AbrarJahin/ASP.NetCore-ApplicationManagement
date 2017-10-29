@@ -39,7 +39,7 @@ namespace ApplicationManagement.DbModel
         public string MotherName { get; set; }  //No 4 in form
 
         //No 5 in form
-        [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Required, DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime DateOfBirth { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public TimeSpan AgeAtLastDateOfSubmission { get; set; }

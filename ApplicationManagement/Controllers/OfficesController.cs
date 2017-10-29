@@ -18,7 +18,7 @@ namespace ApplicationManagement.Controllers
         // GET: Offices
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Office.ToListAsync());
+            return View(await _context.Offices.ToListAsync());
         }
 
         // GET: Offices/Details/5
@@ -29,7 +29,7 @@ namespace ApplicationManagement.Controllers
                 return NotFound();
             }
 
-            var office = await _context.Office
+            var office = await _context.Offices
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (office == null)
             {
@@ -50,7 +50,7 @@ namespace ApplicationManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Detail,Id")] Office office)
+        public async Task<IActionResult> Create([Bind("Name,Description,Id,CreatedTime,CreatorUserId,LastModifiedTime,LastModifireUserId")] Office office)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace ApplicationManagement.Controllers
                 return NotFound();
             }
 
-            var office = await _context.Office.SingleOrDefaultAsync(m => m.Id == id);
+            var office = await _context.Offices.SingleOrDefaultAsync(m => m.Id == id);
             if (office == null)
             {
                 return NotFound();
@@ -82,7 +82,7 @@ namespace ApplicationManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Name,Detail,Id")] Office office)
+        public async Task<IActionResult> Edit(long id, [Bind("Name,Description,Id,CreatedTime,CreatorUserId,LastModifiedTime,LastModifireUserId")] Office office)
         {
             if (id != office.Id)
             {
@@ -120,7 +120,7 @@ namespace ApplicationManagement.Controllers
                 return NotFound();
             }
 
-            var office = await _context.Office
+            var office = await _context.Offices
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (office == null)
             {
@@ -135,15 +135,15 @@ namespace ApplicationManagement.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var office = await _context.Office.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Office.Remove(office);
+            var office = await _context.Offices.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Offices.Remove(office);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         private bool OfficeExists(long id)
         {
-            return _context.Office.Any(e => e.Id == id);
+            return _context.Offices.Any(e => e.Id == id);
         }
     }
 }
