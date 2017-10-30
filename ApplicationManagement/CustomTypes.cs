@@ -52,7 +52,7 @@
             Teacher = 0,
             StudentAdmission,
             Officer,
-            Other
+            Stuff
         }
     }
 }
