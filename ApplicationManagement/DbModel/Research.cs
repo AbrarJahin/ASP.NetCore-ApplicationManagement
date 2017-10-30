@@ -4,11 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApplicationManagement.DbModel
 {
-    public class Research
+    public class Research : BaseEntity
     {
-        [Key]
-        public long Id { get; set; }
-
         public long TeacherId { get; set; }
         [ForeignKey("TeacherId")]
         public virtual TeacherApplication Teacher { get; set; }
@@ -24,13 +21,5 @@ namespace ApplicationManagement.DbModel
         [Required]
         public string EditionOfPublication { get; set; }
         public string Note { get; set; }
-
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
-        public DateTime AddedDate { get; set; }
-
-        public Research()
-        {
-            AddedDate = DateTime.Now;
-        }
     }
 }

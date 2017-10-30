@@ -5,11 +5,8 @@ using static ApplicationManagement.DbModel.CustomTypes;
 
 namespace ApplicationManagement.DbModel
 {
-    public class Experience
+    public class Experience : BaseEntity
     {
-        [Key]
-        public long Id { get; set; }
-
         public long TeacherId { get; set; }
         [ForeignKey("TeacherId")]
         public virtual TeacherApplication Teacher { get; set; }
@@ -32,13 +29,9 @@ namespace ApplicationManagement.DbModel
         public string CertificatePdfFileUrl { get; set; }
 
         public TimeSpan ExperienceTime { get; set; }
-
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
-        public DateTime AddedDate { get; set; }
-
+        
         public Experience()
         {
-            AddedDate = DateTime.Now;
             ExperienceTime = EndDate - StartDate;
         }
     }

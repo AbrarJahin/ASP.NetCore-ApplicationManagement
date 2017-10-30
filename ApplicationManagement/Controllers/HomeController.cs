@@ -6,7 +6,6 @@ using System.Globalization;
 using ApplicationManagement.DbModel;
 using static ApplicationManagement.DbModel.CustomTypes;
 using System.Collections.Generic;
-using ApplicationManagement.ViewModel;
 
 namespace ApplicationManagement.Controllers
 {
@@ -80,7 +79,9 @@ namespace ApplicationManagement.Controllers
                 {
                     Country country = new Country
                     {
-                        Name = i.ToString()
+                        EnglishName = i.ToString(),
+                        ShortName = i.ToString(),
+                        BengaliName = i.ToString()
                     };
                     countries.Add(country);
                 }
@@ -166,10 +167,16 @@ namespace ApplicationManagement.Controllers
                     trainings.Add(training);
                 }
 
-                context.TeacherApplications.Add(new DbModel.TeacherApplication
-                {
+                Payment payment = new Payment {
+                    BankDraftOrPayOrderNo = rnd.Next(100000000, 2147483647).ToString(),
+                    DateOfDraftOrOrder = DateTime.UtcNow,
+                    AmountOfMoney = (UInt16)rnd.Next(100, 9999),
+                    NameOfBank = rnd.Next(100000000, 2147483647).ToString(),
+                    BranchOfBank = rnd.Next(100000000, 2147483647).ToString()
+                };
+
+                Person person = new Person {
                     ProfileImageFileUrl = "as das das d wer sdf sdf sdf dfg",
-                    JobCircular = jobCircular,
                     BengaliName = "আবরার",
                     EnglishName = "Abrar",
                     NickName = "জাহিন",
@@ -189,7 +196,7 @@ namespace ApplicationManagement.Controllers
                     Nationality = "Bangladeshi",
                     MaritalStatus = IsMarried.Unmarried,
                     Religion = ReligionName.Islam,
-                    NId = 19924792106000500+(UInt64)rnd.Next(100000000, 2147483647),
+                    NId = 19924792106000500 + (UInt64)rnd.Next(100000000, 2147483647),
 
                     EducationalResults = educationalResults,
                     ResearchDegries = researchDegrees,
@@ -197,18 +204,21 @@ namespace ApplicationManagement.Controllers
                     Trainings = trainings,
                     Experiences = experiences,
                     Languages = languages,
-                    HasContactWithAnyOrganization = Decision.No,
+
                     References = referances,
                     VisitedCountries = countries,
-                    IsEverSuspended = Decision.No,
-                    IsGettingPension = Decision.No,
-                    IsInvolvedWithAnyAssociation = Decision.No,
 
-                    BankDraftOrPayOrderNo = rnd.Next(100000000, 2147483647).ToString(),
-                    DateOfDraftOrOrder = DateTime.UtcNow,
-                    AmountOfMoney = (UInt16)rnd.Next(100, 9999),
-                    NameOfBank = rnd.Next(100000000, 2147483647).ToString(),
-                    BranchOfBank = rnd.Next(100000000, 2147483647).ToString(),
+                    IsInvolvedWithAnyAssociation = Decision.No,
+                    IsEverSuspended = Decision.No
+                };
+
+                context.TeacherApplications.Add(new DbModel.TeacherApplication
+                {
+                    JobCircular = jobCircular,
+                    //Person = person,
+                    HasContactWithAnyOrganization = Decision.No,
+                    IsGettingPension = Decision.No,
+                    Payment = payment
                 });
 
                 //jobCircular.Teachers.Add();

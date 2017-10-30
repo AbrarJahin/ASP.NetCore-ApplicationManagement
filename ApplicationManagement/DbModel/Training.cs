@@ -4,11 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApplicationManagement.DbModel
 {
-    public class Training
+    public class Training : BaseEntity
     {
-        [Key]
-        public long Id { get; set; }
-
         public long TeacherId { get; set; }
         [ForeignKey("TeacherId")]
         public virtual TeacherApplication Teacher { get; set; }
@@ -24,12 +21,8 @@ namespace ApplicationManagement.DbModel
 
         public TimeSpan Duration { get; set; }
 
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
-        public DateTime AddedDate { get; set; }
-
         public Training()
         {
-            AddedDate = DateTime.Now;
             Duration = EndDate - StartDate;
         }
     }

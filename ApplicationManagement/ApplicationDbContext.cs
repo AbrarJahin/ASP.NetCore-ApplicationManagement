@@ -11,11 +11,14 @@ public class ApplicationDbContext : DbContext
     public DbSet<Advertisement> Advertisements { get; set; }
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Country> Countries { get; set; }
+    public DbSet<CountryPerson> CountryPersons { get; set; }
     public DbSet<EducationResult> EducationResults { get; set; }
     public DbSet<Experience> Experiences { get; set; }
     public DbSet<JobCircular> JobCirculars { get; set; }
     public DbSet<Language> Languages { get; set; }
     public DbSet<Office> Offices { get; set; }
+    public DbSet<Payment> Payments { get; set; }
+    public DbSet<Person> Persons { get; set; }
     public DbSet<Reference> References { get; set; }
     public DbSet<Research> Researches { get; set; }
     public DbSet<ResearchDegree> ResearchDegrees { get; set; }

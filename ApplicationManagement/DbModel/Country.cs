@@ -1,27 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApplicationManagement.DbModel
 {
-    public class Country
+    public class Country : BaseEntity
     {
-        [Key]
-        public long Id { get; set; }
-
         public long TeacherId { get; set; }
         [ForeignKey("TeacherId")]
         public virtual TeacherApplication TeacherApplication { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string EnglishName { get; set; }
 
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
-        public DateTime AddedDate { get; set; }
+        [Required]
+        public string ShortName { get; set; }
 
-        public Country()
-        {
-            AddedDate = DateTime.Now;
-        }
+        [Required]
+        public string BengaliName { get; set; }
+
+        public UInt16 PhoneCode { get; set; }
+
+        public virtual ICollection<CountryPerson> CountryPersons { get; set; }
     }
 }
