@@ -6,11 +6,13 @@ namespace ApplicationManagement.DbModel
     public class CountryPerson : BaseEntity
     {
         [Key, Column(Order = 0)]
-        public int CountryID { get; set; }
+        public long CountryID { get; set; }
         [Key, Column(Order = 1)]
-        public int PersonID { get; set; }
+        public long PersonID { get; set; }
 
+        [ForeignKey("CountryID")]
         public virtual Country Country { get; set; }
+        [ForeignKey("PersonID")]
         public virtual Person Person { get; set; }
 
         public string ReasonOfTour { get; set; }

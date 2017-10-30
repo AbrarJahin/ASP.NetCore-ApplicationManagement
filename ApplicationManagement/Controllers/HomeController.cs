@@ -216,9 +216,10 @@ namespace ApplicationManagement.Controllers
                 {
                     JobCircular = jobCircular,
                     //Person = person,
+                    //Payment = payment,
                     HasContactWithAnyOrganization = Decision.No,
-                    IsGettingPension = Decision.No,
-                    Payment = payment
+                    IsGettingPension = Decision.No
+                    
                 });
 
                 //jobCircular.Teachers.Add();

@@ -56,6 +56,13 @@ public class ApplicationDbContext : DbContext
         return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
     }
 
+    //Fluent API to make Composite Key
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<CountryPerson>()
+            .HasKey(c => new { c.CountryID, c.PersonID });
+    }
+
     private void AddTimestamps()
     {
         var entities = ChangeTracker.Entries().Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
