@@ -62,10 +62,20 @@ public class ApplicationDbContext : DbContext
     //Fluent API to make Composite Key
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Country>(e =>
+        {
+            e.HasAlternateKey(c => new { c.BengaliName });
+            e.HasAlternateKey(c => new { c.EnglishName });
+            e.HasAlternateKey(c => new { c.ShortName });
+        });
+
         modelBuilder.Entity<CountryPerson>(cp =>
         {
             cp.HasOne(p => p.Person).WithMany(c => c.VisitedCountries).HasForeignKey(p => p.PersonID);
             cp.HasOne(c => c.Country).WithMany(p => p.Visitors).HasForeignKey(c => c.CountryID);
+
+            //For Ensuring only 1 entry per person
+            cp.HasAlternateKey(c => new { c.CountryID, c.PersonID });
         });
     }
 
