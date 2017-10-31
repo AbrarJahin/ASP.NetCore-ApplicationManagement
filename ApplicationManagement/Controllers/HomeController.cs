@@ -40,18 +40,20 @@ namespace ApplicationManagement.Controllers
 
                 JobCircular jobCircular = context.JobCirculars
                                             .SingleOrDefault(j => j.Id == 1);
-                
+
                 Address presentAddress = new Address
                 {
+                    //AddressType = AddressType.Present,
                     HoldingNoOrVillage = "1234",
                     RoadBlockSector = "28",
                     Thana = "Kotawoli",
                     PostOffice = "Rupatoli",
                     District = "Barisal"
                 };
-                
+
                 Address permanentAddress = new Address
                 {
+                    //AddressType = AddressType.Permanent,
                     HoldingNoOrVillage = "86/3",
                     RoadBlockSector = "2 No Cross Road",
                     Thana = "Daulatpur",
@@ -59,170 +61,56 @@ namespace ApplicationManagement.Controllers
                     District = "Khulna"
                 };
 
-                ICollection<EducationResult> educationalResults = new List<EducationResult>();
-                for (int i = 0; i < 4; i++)
-                {
-                    EducationResult education = new EducationResult
-                    {
-                        ExamName = "Exam " + i,
-                        BoardOrUniversity = "University " + i,
-                        GroupOrSubject = "Subject " + i,
-                        YearOfPassing = year,
-                        YearOfExam = (UInt16)(year + 1),
-                        DivisionOrClassOrGPAOrCGPA = i.ToString()
-                    };
-                    educationalResults.Add(education);
-                }
-
-                ICollection<Country> countries = new List<Country>();
-                for (int i = 0; i < 4; i++)
-                {
-                    Country country = new Country
-                    {
-                        EnglishName = i.ToString(),
-                        ShortName = i.ToString(),
-                        BengaliName = i.ToString()
-                    };
-                    countries.Add(country);
-                }
-
-                ICollection<Experience> experiences = new List<Experience>();
-                for (int i = 0; i < 4; i++)
-                {
-                    Experience experience = new Experience
-                    {
-                        NameOfPost = i.ToString(),
-                        NameOfOrganization = i.ToString(),
-                        OrganizationType = OrganizationType.Government,
-                        SalaryScale = (UInt16)rnd.Next(1999, 2017),
-                        TotalSalary = (UInt16)rnd.Next(1999, 2017),
-                        StartDate = DateTime.UtcNow,
-                        EndDate = DateTime.UtcNow
-                    };
-                    experiences.Add(experience);
-                }
-
-                ICollection<Language> languages = new List<Language>();
-                for (int i = 0; i < 4; i++)
-                {
-                    Language language = new Language
-                    {
-                        Name = i.ToString(),
-                        Skill = i.ToString()
-                    };
-                    languages.Add(language);
-                }
-
-                ICollection<Reference> referances = new List<Reference>();
-                for (int i = 0; i < 4; i++)
-                {
-                    Reference referance = new Reference
-                    {
-                        Name = i.ToString(),
-                        Identity = i.ToString(),
-                        Address = i.ToString(),
-                        Phone = "01719022029"
-                    };
-                    referances.Add(referance);
-                }
-
-                ICollection<ResearchDegree> researchDegrees = new List<ResearchDegree>();
-                for (int i = 0; i < 4; i++)
-                {
-                    ResearchDegree researchDegree = new ResearchDegree
-                    {
-                        NameOfDegree = i.ToString(),
-                        SubjectOfResearch = i.ToString(),
-                        SupervisorsNameAndAddress = i.ToString(),
-                        UniversityName = i.ToString(),
-                        YearOfPassing = (UInt16)i
-                    };
-                    researchDegrees.Add(researchDegree);
-                }
-
-                ICollection<Research> researches = new List<Research>();
-                for (int i = 0; i < 4; i++)
-                {
-                    Research research = new Research
-                    {
-                        NameOfPublication = i.ToString(),
-                        NameOfPublicationPaper = i.ToString(),
-                        NameOfPublicationInstitute = i.ToString(),
-                        DateOfPublication = DateTime.UtcNow,
-                        EditionOfPublication = i.ToString()
-                    };
-                    researches.Add(research);
-                }
-
-                ICollection<Training> trainings = new List<Training>();
-                for (int i = 0; i < 4; i++)
-                {
-                    Training training = new Training
-                    {
-                        Name = i.ToString(),
-                        Description = i.ToString(),
-                        StartDate = DateTime.UtcNow,
-                        EndDate = DateTime.UtcNow
-                    };
-                    trainings.Add(training);
-                }
-
-                Payment payment = new Payment {
-                    BankDraftOrPayOrderNo = rnd.Next(100000000, 2147483647).ToString(),
-                    DateOfDraftOrOrder = DateTime.UtcNow,
-                    AmountOfMoney = (UInt16)rnd.Next(100, 9999),
-                    NameOfBank = rnd.Next(100000000, 2147483647).ToString(),
-                    BranchOfBank = rnd.Next(100000000, 2147483647).ToString()
-                };
-
                 Person person = new Person {
-                    ProfileImageFileUrl = "as das das d wer sdf sdf sdf dfg",
-                    BengaliName = "আবরার",
-                    EnglishName = "Abrar",
-                    NickName = "জাহিন",
-
-                    FatherName = "Joynal Abedin",
-                    MotherName = "Jinatun Nissaa",
-                    SpouceName = "N/A",
-
-                    PhoneNumber = "01822804636",
-                    Email = "abrarjahin@live.com",
-
-                    DateOfBirth = DateTime.ParseExact("31/12/1992", "dd/MM/yyyy", CultureInfo.InvariantCulture),
-
+                    ProfileImageFileUrl = "asd asd asd asd asd sadas dasd asd",
+                    BengaliName = "a sdasd asd asd asd asd",
+                    EnglishName = "Asasd asd asd asd asd",
+                    NickName = "Rs dsd fsdaf sdf sdf",
+                    PhoneNumber = "+8801822804636",
+                    Email = "abrarja@asd.asd",
+                    FatherName = "asd asd asd asd",
+                    DateOfBirth = DateTime.UtcNow,
                     PresentAddress = presentAddress,
                     PermanentAddress = permanentAddress,
-
                     Nationality = "Bangladeshi",
                     MaritalStatus = IsMarried.Unmarried,
                     Religion = ReligionName.Islam,
-                    NId = 19924792106000500 + (UInt64)rnd.Next(100000000, 2147483647),
-
-                    EducationalResults = educationalResults,
-                    ResearchDegries = researchDegrees,
-                    Researches = researches,
-                    Trainings = trainings,
-                    Experiences = experiences,
-                    Languages = languages,
-
-                    References = referances,
-                    //VisitedCountries = countries,
-
+                    NId = 1000000009,
                     IsInvolvedWithAnyAssociation = Decision.No,
                     IsEverSuspended = Decision.No
                 };
 
-                context.TeacherApplications.Add(new TeacherApplication
-                {
-                    JobCircular = jobCircular,
-                    //Person = person,
-                    //Payment = payment,
-                    HasContactWithAnyOrganization = Decision.No,
-                    IsGettingPension = Decision.No
-                    
-                });
+                Payment payment = new Payment {
+                    BankDraftOrPayOrderNo = "",
+                    DateOfDraftOrOrder = DateTime.UtcNow,
+                    AmountOfMoney = 10,
+                    NameOfBank = "asd asd asd",
+                    BranchOfBank = "Asdas dasd asd a"
+                };
 
-                //jobCircular.Teachers.Add();
+                TeacherApplication teacherApplication = new TeacherApplication {
+                    JobCircular = jobCircular,
+                    Person = person,
+                    AgeAtLastDateOfSubmission = jobCircular.EndDate - person.DateOfBirth,
+                    HasContactWithAnyOrganization = Decision.No,
+                    IsGettingPension = Decision.No,
+                    Payment = payment
+                };
+
+                for (int i = 1; i < 4; i++)
+                {
+                    Country country = context.Countries
+                                            .SingleOrDefault(c => c.Id == i);
+                    CountryPerson countryPerson = new CountryPerson
+                    {
+                        Country = country,
+                        Person = person,
+                        ReasonOfTour = i.ToString()
+                    };
+                    context.CountryPersons.Add(countryPerson);
+                }
+
+                context.TeacherApplications.Add(teacherApplication);
                 await context.SaveChangesAsync();
             }
             return View();

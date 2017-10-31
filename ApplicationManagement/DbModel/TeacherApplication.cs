@@ -11,7 +11,7 @@ namespace ApplicationManagement.DbModel
         public virtual JobCircular JobCircular { get; set; }
 
         public long PersonId { get; set; }
-        [ForeignKey("PersonId")]
+        [Required, ForeignKey("PersonId")]
         public virtual Person Person { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
@@ -29,7 +29,7 @@ namespace ApplicationManagement.DbModel
         public string PensionOrganizationName { get; set; }
 
         public long PaymentId { get; set; }
-        [ForeignKey("PaymentId")]
+        [Required, ForeignKey("PaymentId")]
         public virtual Payment Payment { get; set; }
 
         [MinLength(9), MaxLength(1000)]
