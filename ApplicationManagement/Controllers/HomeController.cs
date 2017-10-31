@@ -43,7 +43,6 @@ namespace ApplicationManagement.Controllers
 
                 Address presentAddress = new Address
                 {
-                    //AddressType = AddressType.Present,
                     HoldingNoOrVillage = "1234",
                     RoadBlockSector = "28",
                     Thana = "Kotawoli",
@@ -53,13 +52,28 @@ namespace ApplicationManagement.Controllers
 
                 Address permanentAddress = new Address
                 {
-                    //AddressType = AddressType.Permanent,
                     HoldingNoOrVillage = "86/3",
                     RoadBlockSector = "2 No Cross Road",
                     Thana = "Daulatpur",
                     PostOffice = "Daulatpur",
                     District = "Khulna"
                 };
+
+                ICollection<Experience> experiences = new List<Experience>();
+                for (int i = 0; i < 4; i++)
+                {
+                    Experience experience = new Experience
+                    {
+                        NameOfPost = i.ToString(),
+                        NameOfOrganization = i.ToString(),
+                        OrganizationType = OrganizationType.Government,
+                        SalaryScale = (UInt16)rnd.Next(1999, 2017),
+                        TotalSalary = (UInt16)rnd.Next(1999, 2017),
+                        StartDate = DateTime.UtcNow,
+                        EndDate = DateTime.UtcNow
+                    };
+                    experiences.Add(experience);
+                }
 
                 Person person = new Person {
                     ProfileImageFileUrl = "asd asd asd asd asd sadas dasd asd",
@@ -77,7 +91,8 @@ namespace ApplicationManagement.Controllers
                     Religion = ReligionName.Islam,
                     NId = 1000000009,
                     IsInvolvedWithAnyAssociation = Decision.No,
-                    IsEverSuspended = Decision.No
+                    IsEverSuspended = Decision.No,
+                    Experiences = experiences
                 };
 
                 Payment payment = new Payment {

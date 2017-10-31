@@ -5,9 +5,9 @@ namespace ApplicationManagement.DbModel
 {
     public class Reference : BaseEntity
     {
-        public long TeacherId { get; set; }
-        [ForeignKey("TeacherId")]
-        public virtual TeacherApplication Teacher { get; set; }
+        public long TeacherApplicationId { get; set; }
+        [ForeignKey("TeacherApplicationId")]
+        public virtual TeacherApplication TeacherApplication { get; set; }
 
         [Required]
         public string Name { get; set; }

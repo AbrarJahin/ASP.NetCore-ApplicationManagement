@@ -54,11 +54,5 @@
             Officer,
             Stuff
         }
-
-        public enum AddressType
-        {
-            Present = 0,
-            Permanent
-        }
     }
 }

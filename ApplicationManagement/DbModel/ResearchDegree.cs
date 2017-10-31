@@ -6,9 +6,9 @@ namespace ApplicationManagement.DbModel
 {
     public class ResearchDegree : BaseEntity
     {
-        public long TeacherId { get; set; }
-        [ForeignKey("TeacherId")]
-        public virtual TeacherApplication Teacher { get; set; }
+        public long PersonId { get; set; }
+        [ForeignKey("PersonId")]
+        public virtual Person Person { get; set; }
 
         [Required]
         public string NameOfDegree { get; set; }

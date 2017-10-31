@@ -6,11 +6,6 @@ namespace ApplicationManagement.DbModel
 {
     public class Address : BaseEntity
     {
-        //public long PersonId { get; set; }
-        //[Required, ForeignKey("PersonId")]
-        //public virtual Person Person { get; set; }
-        //[Required]
-        //public AddressType AddressType { get; set; }
         [Required, MinLength(3), MaxLength(50)]
         public string HoldingNoOrVillage { get; set; }
         [Required, MinLength(3), MaxLength(50)]
