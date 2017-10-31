@@ -4,6 +4,8 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 public class ApplicationDbContext : DbContext
 {
@@ -28,6 +30,7 @@ public class ApplicationDbContext : DbContext
     //Configure Database Settings
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        //Should be done by this way - https://stackoverflow.com/questions/39083372/how-to-read-connection-string-in-net-core
         //Configuration.GetConnectionString("DefaultConnection");
         optionsBuilder.UseSqlite("Filename=./applicationDB.db");
     }
@@ -59,8 +62,11 @@ public class ApplicationDbContext : DbContext
     //Fluent API to make Composite Key
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<CountryPerson>()
-            .HasKey(c => new { c.CountryID, c.PersonID });
+        modelBuilder.Entity<CountryPerson>(cp =>
+        {
+            cp.HasOne(p => p.Person).WithMany(c => c.VisitedCountries).HasForeignKey(p => p.PersonID);
+            cp.HasOne(c => c.Country).WithMany(p => p.Visitors).HasForeignKey(c => c.CountryID);
+        });
     }
 
     private void AddTimestamps()
@@ -95,6 +101,21 @@ public class ApplicationDbContext : DbContext
             ((BaseEntity)entity.Entity).LastModifiedTime = DateTime.UtcNow;
             ((BaseEntity)entity.Entity).LastModifireUserId = currentUserId;
             //((BaseEntity)entity.Entity).LastModifireIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+        }
+    }
+
+    internal void Seed(IApplicationBuilder app)
+    {
+        // Get an instance of the DbContext from the DI container
+        using (ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>())
+        {
+            //... perform other seed operations
+            context.AddRange(
+                new Country { BengaliName = "England", EnglishName = "England", ShortName = "en" },
+                new Country { BengaliName = "France", EnglishName = "France", ShortName = "fr" },
+                new Country { BengaliName = "Bangladesh", EnglishName = "Bangladesh", ShortName = "bd" }
+            );
+            context.SaveChangesAsync();
         }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 using WebMarkupMin.AspNetCore1;
 
 namespace ApplicationManagement
@@ -11,9 +12,12 @@ namespace ApplicationManagement
     public class Startup
     {
         public IConfigurationRoot Configuration { get; }
+        private ILogger _logger;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            _logger = loggerFactory.CreateLogger<Startup>();
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -23,6 +27,10 @@ namespace ApplicationManagement
 
             using (var context = new ApplicationDbContext())
             {
+                if (env.IsDevelopment())
+                {
+                    context.Database.EnsureDeleted();
+                }
                 // Migrate the database
                 context.Database.EnsureCreated();
                 context.Database.Migrate();
@@ -38,7 +46,7 @@ namespace ApplicationManagement
             /*
             //Configure DB Connection String
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(Configuration.GetConnectionString("DbContextSettings:ConnectionString")));
             */
 
             // Add EntityFramework Service.
@@ -73,7 +81,7 @@ namespace ApplicationManagement
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ApplicationDbContext applicationDbContext)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -86,6 +94,16 @@ namespace ApplicationManagement
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+            }
+
+            //Seed The Database
+            try
+            {
+                applicationDbContext.Seed(app);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
             }
 
             app.UseStaticFiles();

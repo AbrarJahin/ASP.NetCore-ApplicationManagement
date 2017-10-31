@@ -206,13 +206,13 @@ namespace ApplicationManagement.Controllers
                     Languages = languages,
 
                     References = referances,
-                    VisitedCountries = countries,
+                    //VisitedCountries = countries,
 
                     IsInvolvedWithAnyAssociation = Decision.No,
                     IsEverSuspended = Decision.No
                 };
 
-                context.TeacherApplications.Add(new DbModel.TeacherApplication
+                context.TeacherApplications.Add(new TeacherApplication
                 {
                     JobCircular = jobCircular,
                     //Person = person,
