@@ -49,11 +49,11 @@ namespace ApplicationManagement
                 options.UseSqlite(Configuration.GetConnectionString("DbContextSettings:ConnectionString")));
             */
 
-            // Add EntityFramework Service.
-            services.AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>();
-
             // Add framework services.
             services.AddMvc();
+
+            // Add EntityFramework Service.
+            services.AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>();
 
             //HTML minifire service
             //With This - using WebMarkupMin.AspNetCore1;
@@ -75,6 +75,35 @@ namespace ApplicationManagement
                         options.MinificationSettings.RemoveOptionalEndTags = true;
                     })
                 .AddHttpCompression();
+            /*
+            //Configure Identity
+            services.AddIdentity<Users, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext, Guid>()
+                .AddDefaultTokenProviders();
+            */
+
+            // Configure Identity
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = false;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+                // Cookie settings
+                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
+                options.Cookies.ApplicationCookie.LoginPath = "/Account/LogIn";
+                options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOut";
+
+                // User settings
+                options.User.RequireUniqueEmail = true;
+            });
 
             // Add Configuration Manager services.
             services.AddSingleton<IConfiguration>(Configuration);
@@ -107,9 +136,12 @@ namespace ApplicationManagement
             }
 
             app.UseStaticFiles();
+            /*
+            //Configure Identity
+            app.UseIdentity();
+            */
 
-            //HTML Minifire
-            //With This - using WebMarkupMin.AspNetCore1;
+            //HTML Minifire With This - using WebMarkupMin.AspNetCore1;
             app.UseWebMarkupMin();
 
             app.UseMvc(routes =>
