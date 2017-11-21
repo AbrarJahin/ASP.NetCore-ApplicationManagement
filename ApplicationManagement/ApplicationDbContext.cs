@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
 
 public class ApplicationDbContext : DbContext
 {
+    HttpContext _httpContext;
+
     //List all tables here
     public DbSet<Advertisement> Advertisements { get; set; }
     public DbSet<Address> Addresses { get; set; }
@@ -27,6 +30,13 @@ public class ApplicationDbContext : DbContext
     public DbSet<TeacherApplication> TeacherApplications { get; set; }
     public DbSet<Training> Trainings { get; set; }
     public DbSet<User> Users { get; set; }
+    /*
+    //Configure Database Settings
+    ApplicationDbContext(HttpContext httpContext)
+    {
+        _httpContext = httpContext;
+    }
+    */
 
     //Configure Database Settings
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -93,25 +103,25 @@ public class ApplicationDbContext : DbContext
 
         foreach (var entity in entities)
         {
+            //Should store location also from here- http://www.jerriepelser.com/blog/aspnetcore-geo-location-from-ip-address/
+
             if (entity.State == EntityState.Added)
             {
                 ((BaseEntity)entity.Entity).CreatedTime = DateTime.UtcNow;
                 ((BaseEntity)entity.Entity).CreatorUserId = currentUserId;
-                //((BaseEntity)entity.Entity).CreatorIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                //((BaseEntity)entity.Entity).CreatorIPAddress = _httpContext.Connection.RemoteIpAddress.ToString();
             }
             else
             {
-                ((BaseEntity)entity.Entity).CreatedTime = ((BaseEntity)entity.Entity).CreatedTime.GetValueOrDefault();
-                //((BaseEntity)entity.Entity).CreatedTime = ((BaseEntity)entity.Entity).Property("CreatedTime").OriginalValue;
-                //db.Entry((BaseEntity)entity.Entity).Property(x => x.CreatedTime).IsModified = true;
-                //((BaseEntity)entity.Entity).CreatedTime = ((BaseEntity)entity.Entity).Property("CreatedTime").OriginalValue;
-                ((BaseEntity)entity.Entity).CreatorUserId = ((BaseEntity)entity.Entity).CreatorUserId;
-                //((BaseEntity)entity.Entity).CreatorIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            }
+                this.Entry(((BaseEntity)entity.Entity)).Property(e => e.CreatedTime).IsModified = false;
+                this.Entry(((BaseEntity)entity.Entity)).Property(e => e.CreatorUserId).IsModified = false;
+                //this.Entry(((BaseEntity)entity.Entity)).Property(e => e.CreatorUserId).CreatorIPAddress = false;
 
-            ((BaseEntity)entity.Entity).LastModifiedTime = DateTime.UtcNow;
-            ((BaseEntity)entity.Entity).LastModifireUserId = currentUserId;
-            //((BaseEntity)entity.Entity).LastModifireIPAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                //Set updated At time
+                ((BaseEntity)entity.Entity).LastModifiedTime = DateTime.UtcNow;
+                ((BaseEntity)entity.Entity).LastModifireUserId = currentUserId;
+                //((BaseEntity)entity.Entity).LastModifireIPAddress = _httpContext.Connection.RemoteIpAddress.ToString();
+            }
         }
     }
 

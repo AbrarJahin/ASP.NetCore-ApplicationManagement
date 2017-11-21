@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
 using ApplicationManagement.DbModel;
 using static ApplicationManagement.DbModel.CustomTypes;
 using System.Collections.Generic;

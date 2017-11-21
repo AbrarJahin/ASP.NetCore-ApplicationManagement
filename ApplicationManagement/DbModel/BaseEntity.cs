@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApplicationManagement.DbModel
 {
@@ -12,11 +11,17 @@ namespace ApplicationManagement.DbModel
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
         public DateTime? CreatedTime { get; set; }
         public long CreatorUserId { get; set; }
-        //public string CreatorIPAddress { get; set; }
+        public string CreatorIPAddress { get; set; }
 
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm:ss.fff}", ApplyFormatInEditMode = true)]
         public DateTime? LastModifiedTime { get; set; }
-        public long LastModifireUserId { get; set; }
-        //public string LastModifireIPAddress { get; set; }
+        public long? LastModifireUserId { get; set; }
+        public string LastModifireIPAddress { get; set; }
+
+        /*
+        //Concurrency controll
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+        */
     }
 }
