@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 
 public class ApplicationDbContext : DbContext
 {
-    HttpContext _httpContext;
+    //HttpContext _httpContext;
 
     //List all tables here
     public DbSet<Advertisement> Advertisements { get; set; }
